@@ -1,0 +1,14 @@
+{
+  "name": "onlinecampusdisha",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "cd campus-disha-website && npm run dev",
+    "build": "cd campus-disha-website && npm run build",
+    "start": "cd campus-disha-website && npm start",
+    "lint": "cd campus-disha-website && npm run lint"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "buildCommand": "cd campus-disha-website && npm run build",
+  "outputDirectory": "campus-disha-website/.next",
+  "installCommand": "cd campus-disha-website && npm install",
+  "devCommand": "cd campus-disha-website && npm run dev",
+  "framework": "nextjs",
+  "rootDirectory": "campus-disha-website"
+}
