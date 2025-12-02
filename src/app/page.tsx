@@ -254,11 +254,14 @@ export default function Home() {
       {/* Enhanced Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900">
         {/* Animated Background Elements */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.03"%3E%3Ccircle cx="7" cy="7" r="1"/%3E%3Ccircle cx="43" cy="7" r="1"/%3E%3Ccircle cx="25" cy="7" r="1"/%3E%3Ccircle cx="7" cy="43" r="1"/%3E%3Ccircle cx="43" cy="43" r="1"/%3E%3Ccircle cx="25" cy="43" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3Ccircle cx='43' cy='7' r='1'/%3E%3Ccircle cx='25' cy='7' r='1'/%3E%3Ccircle cx='7' cy='43' r='1'/%3E%3Ccircle cx='43' cy='43' r='1'/%3E%3Ccircle cx='25' cy='43' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          opacity: 0.2
+        }}></div>
 
         {/* Floating gradient orbs */}
         <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
+        <div className="absolute top-40 right-20 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
         <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
 
         <div className="relative z-10 container mx-auto px-4 pt-20 pb-32">
