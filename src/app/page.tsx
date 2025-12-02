@@ -797,7 +797,7 @@ export default function Home() {
                     <div className="relative">
                       {/* Avatar placeholder */}
                       <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl lg:text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300">
-                        {testimonial.name.split(' ').map(n => n[0]).join('')}
+                        {testimonial.name.split(' ').map((n: string) => n[0]).join('')}
                       </div>
                       {/* University Badge */}
                       <div className="absolute -bottom-2 -right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded-full">
