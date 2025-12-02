@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import Link from 'next/link'
-import { ArrowRight, Star, CheckCircle, TrendingUp, Users, Award, BookOpen, MapPin, Phone, Mail, Clock, Play, Shield, Globe, DollarSign, Target } from 'lucide-react'
+import { ArrowRight, ChevronRight, Star, CheckCircle, TrendingUp, Users, Award, BookOpen, MapPin, Phone, Mail, Clock, Play, Shield, Globe, DollarSign, Target } from 'lucide-react'
 
 const universities = [
   {
