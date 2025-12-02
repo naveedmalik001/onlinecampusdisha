@@ -153,6 +153,57 @@ const universities = [
   }
 ]
 
+const testimonials = [
+  {
+    name: "Priya Sharma",
+    role: "MBA Student, NMIMS Online",
+    image: "/testimonials/priya.jpg",
+    content: "The flexibility of online learning allowed me to pursue my master's while working full-time. Campus Disha guided me through the entire admission process.",
+    rating: 5,
+    program: "MBA"
+  },
+  {
+    name: "Rahul Verma",
+    role: "BBA Student, SRM Online",
+    image: "/testimonials/rahul.jpg",
+    content: "Excellent support from Campus Disha team. They helped me choose the right program and university based on my career goals.",
+    rating: 5,
+    program: "BBA"
+  },
+  {
+    name: "Anita Patel",
+    role: "MCA Student, Manipal Online",
+    image: "/testimonials/anita.jpg",
+    content: "The quality of education is outstanding, and the UGC recognition gives me confidence for my future career prospects.",
+    rating: 5,
+    program: "MCA"
+  },
+  {
+    name: "Kumar Ramesh",
+    role: "B.Com Student, Amity Online",
+    image: "/testimonials/kumar.jpg",
+    content: "I was skeptical about online education, but the interactive sessions and experienced faculty changed my perspective completely.",
+    rating: 5,
+    program: "B.Com"
+  },
+  {
+    name: "Meera Joshi",
+    role: "M.A. Student, Chandigarh University Online",
+    image: "/testimonials/meera.jpg",
+    content: "Campus Disha made the complex admission process simple. Their guidance was invaluable in selecting the right specialization.",
+    rating: 5,
+    program: "M.A. Psychology"
+  },
+  {
+    name: "Vikram Singh",
+    role: "B.Tech Student, UPES Online",
+    image: "/testimonials/vikram.jpg",
+    content: "The industry-relevant curriculum and practical approach have given me the skills needed for today's competitive job market.",
+    rating: 5,
+    program: "B.Tech"
+  }
+]
+
 export default function Home() {
   const [formData, setFormData] = useState({
     name: '',
@@ -162,11 +213,90 @@ export default function Home() {
     course: '',
     message: ''
   })
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitSuccess, setSubmitSuccess] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const filteredUniversities = universities.filter(university =>
+    university.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    university.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    university.accreditation.some(acc => acc.toLowerCase().includes(searchTerm.toLowerCase()))
+  )
+
+  const validateForm = () => {
+    const errors: Record<string, string> = {}
+
+    if (!formData.name.trim()) {
+      errors.name = 'Name is required'
+    } else if (formData.name.trim().length < 2) {
+      errors.name = 'Name must be at least 2 characters'
+    }
+
+    if (!formData.email.trim()) {
+      errors.email = 'Email is required'
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.email = 'Please enter a valid email address'
+    }
+
+    if (!formData.phone.trim()) {
+      errors.phone = 'Phone number is required'
+    } else if (!/^[6-9]\d{9}$/.test(formData.phone.replace(/\D/g, ''))) {
+      errors.phone = 'Please enter a valid 10-digit mobile number'
+    }
+
+    if (!formData.university) {
+      errors.university = 'Please select a university'
+    }
+
+    setFormErrors(errors)
+    return Object.keys(errors).length === 0
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
-    // Handle form submission here
+
+    if (!validateForm()) {
+      return
+    }
+
+    setIsSubmitting(true)
+    setSubmitSuccess(false)
+
+    try {
+      // Simulate API call
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          formType: 'hero-section',
+          timestamp: new Date().toISOString()
+        }),
+      })
+
+      if (response.ok) {
+        setSubmitSuccess(true)
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          university: '',
+          course: '',
+          message: ''
+        })
+        setFormErrors({})
+      } else {
+        throw new Error('Form submission failed')
+      }
+    } catch (error) {
+      setFormErrors({ submit: 'Failed to submit form. Please try again later.' })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -184,14 +314,80 @@ export default function Home() {
                 <p className="text-sm text-gray-600">Your Gateway to Online Education</p>
               </div>
             </div>
+
+            {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-6">
               <Link href="#home" className="text-gray-700 hover:text-blue-600 transition">Home</Link>
               <Link href="#about" className="text-gray-700 hover:text-blue-600 transition">About</Link>
               <Link href="#universities" className="text-gray-700 hover:text-blue-600 transition">Universities</Link>
+              <Link href="#testimonials" className="text-gray-700 hover:text-blue-600 transition">Success Stories</Link>
               <Link href="#ugc-guidelines" className="text-gray-700 hover:text-blue-600 transition">UGC Guidelines</Link>
               <Link href="#contact" className="text-gray-700 hover:text-blue-600 transition">Contact</Link>
             </nav>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              <div className="space-y-1">
+                <div className={`w-6 h-0.5 bg-gray-600 transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></div>
+                <div className={`w-6 h-0.5 bg-gray-600 transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`}></div>
+                <div className={`w-6 h-0.5 bg-gray-600 transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></div>
+              </div>
+            </button>
           </div>
+
+          {/* Mobile Navigation */}
+          {mobileMenuOpen && (
+            <nav className="md:hidden mt-4 py-4 border-t border-gray-200">
+              <div className="flex flex-col space-y-3">
+                <Link
+                  href="#home"
+                  className="text-gray-700 hover:text-blue-600 transition py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Home
+                </Link>
+                <Link
+                  href="#about"
+                  className="text-gray-700 hover:text-blue-600 transition py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  About
+                </Link>
+                <Link
+                  href="#universities"
+                  className="text-gray-700 hover:text-blue-600 transition py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Universities
+                </Link>
+                <Link
+                  href="#testimonials"
+                  className="text-gray-700 hover:text-blue-600 transition py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Success Stories
+                </Link>
+                <Link
+                  href="#ugc-guidelines"
+                  className="text-gray-700 hover:text-blue-600 transition py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  UGC Guidelines
+                </Link>
+                <Link
+                  href="#contact"
+                  className="text-gray-700 hover:text-blue-600 transition py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Contact
+                </Link>
+              </div>
+            </nav>
+          )}
         </div>
       </header>
 
@@ -235,38 +431,111 @@ export default function Home() {
             <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl p-8">
               <h3 className="text-2xl font-bold mb-6 text-gray-900">Get Free Counseling</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
-                <Input
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  required
-                />
-                <Input
-                  type="email"
-                  placeholder="Email Address"
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  required
-                />
-                <Input
-                  type="tel"
-                  placeholder="Phone Number"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                  required
-                />
-                <Select onValueChange={(value) => setFormData({...formData, university: value})}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select University" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {universities.map((uni) => (
-                      <SelectItem key={uni.name} value={uni.name}>{uni.name}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
-                  Get Call Back
+                <div>
+                  <Input
+                    placeholder="Your Name"
+                    value={formData.name}
+                    onChange={(e) => {
+                      setFormData({...formData, name: e.target.value})
+                      if (formErrors.name) {
+                        setFormErrors({...formErrors, name: ''})
+                      }
+                    }}
+                    className={formErrors.name ? 'border-red-500 focus:border-red-500' : ''}
+                    required
+                  />
+                  {formErrors.name && (
+                    <p className="text-red-500 text-sm mt-1">{formErrors.name}</p>
+                  )}
+                </div>
+
+                <div>
+                  <Input
+                    type="email"
+                    placeholder="Email Address"
+                    value={formData.email}
+                    onChange={(e) => {
+                      setFormData({...formData, email: e.target.value})
+                      if (formErrors.email) {
+                        setFormErrors({...formErrors, email: ''})
+                      }
+                    }}
+                    className={formErrors.email ? 'border-red-500 focus:border-red-500' : ''}
+                    required
+                  />
+                  {formErrors.email && (
+                    <p className="text-red-500 text-sm mt-1">{formErrors.email}</p>
+                  )}
+                </div>
+
+                <div>
+                  <Input
+                    type="tel"
+                    placeholder="Phone Number"
+                    value={formData.phone}
+                    onChange={(e) => {
+                      setFormData({...formData, phone: e.target.value})
+                      if (formErrors.phone) {
+                        setFormErrors({...formErrors, phone: ''})
+                      }
+                    }}
+                    className={formErrors.phone ? 'border-red-500 focus:border-red-500' : ''}
+                    required
+                  />
+                  {formErrors.phone && (
+                    <p className="text-red-500 text-sm mt-1">{formErrors.phone}</p>
+                  )}
+                </div>
+
+                <div>
+                  <Select onValueChange={(value) => {
+                    setFormData({...formData, university: value})
+                    if (formErrors.university) {
+                      setFormErrors({...formErrors, university: ''})
+                    }
+                  }}>
+                    <SelectTrigger className={formErrors.university ? 'border-red-500 focus:border-red-500' : ''}>
+                      <SelectValue placeholder="Select University" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {universities.map((uni) => (
+                        <SelectItem key={uni.name} value={uni.name}>{uni.name}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  {formErrors.university && (
+                    <p className="text-red-500 text-sm mt-1">{formErrors.university}</p>
+                  )}
+                </div>
+
+                {submitSuccess && (
+                  <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+                    Thank you for your submission! We'll contact you soon.
+                  </div>
+                )}
+
+                {formErrors.submit && (
+                  <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                    {formErrors.submit}
+                  </div>
+                )}
+
+                <Button
+                  type="submit"
+                  className="w-full bg-blue-600 hover:bg-blue-700"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <div className="flex items-center justify-center">
+                      <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                      </svg>
+                      Processing...
+                    </div>
+                  ) : (
+                    'Get Call Back'
+                  )}
                 </Button>
               </form>
             </div>
@@ -376,13 +645,46 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Our Partner Universities
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
               Connect with India's most prestigious universities offering UGC-entitled online programs
             </p>
+
+            {/* Search Bar */}
+            <div className="max-w-2xl mx-auto">
+              <div className="relative">
+                <Input
+                  type="text"
+                  placeholder="Search universities by name, program, or accreditation..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-12 pr-4 py-3 text-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                />
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+                {searchTerm && (
+                  <button
+                    onClick={() => setSearchTerm('')}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+                  >
+                    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                )}
+              </div>
+              {searchTerm && (
+                <p className="text-sm text-gray-600 mt-2">
+                  Found {filteredUniversities.length} universities matching "{searchTerm}"
+                </p>
+              )}
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {universities.map((university) => (
+            {filteredUniversities.map((university) => (
               <Card key={university.name} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <div className="w-full h-24 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
@@ -494,6 +796,67 @@ export default function Home() {
                 </CardContent>
               </Card>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-20 px-4 bg-white">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Student Success Stories
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Hear from our students who are thriving in their online education journey
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
+                <CardHeader>
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-blue-600 font-semibold text-lg">
+                        {testimonial.name.split(' ').map(n => n[0]).join('')}
+                      </span>
+                    </div>
+                    <div>
+                      <CardTitle className="text-lg text-gray-900">{testimonial.name}</CardTitle>
+                      <CardDescription className="text-sm text-gray-600">{testimonial.role}</CardDescription>
+                    </div>
+                  </div>
+
+                  <div className="flex mb-2">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <svg
+                        key={i}
+                        className="w-5 h-5 text-yellow-400 fill-current"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                      </svg>
+                    ))}
+                  </div>
+
+                  <div className="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full mb-4">
+                    {testimonial.program}
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-700 italic leading-relaxed">
+                    "{testimonial.content}"
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+              Start Your Success Story
+            </Button>
           </div>
         </div>
       </section>
