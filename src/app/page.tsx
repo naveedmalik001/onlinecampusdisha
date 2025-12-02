@@ -801,7 +801,7 @@ export default function Home() {
                       </div>
                       {/* University Badge */}
                       <div className="absolute -bottom-2 -right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded-full">
-                        {testimonial.university.split(' ')[0]}
+                        {testimonial.university?.split(' ')[0] ?? ''}
                       </div>
                     </div>
 
