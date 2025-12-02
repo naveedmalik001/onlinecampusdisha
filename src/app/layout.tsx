@@ -86,7 +86,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-sans antialiased">
-        {children}
+        <div className="w-full">
+          {children}
+        </div>
       </body>
     </html>
   );

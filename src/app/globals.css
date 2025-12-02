@@ -120,3 +120,18 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom container with 1250px max width */
+@layer utilities {
+  .container {
+    @apply mx-auto px-4;
+    max-width: 1250px !important;
+    width: 100%;
+  }
+
+  /* Ensure all sections respect the 1250px width */
+  section {
+    @apply mx-auto px-4;
+    max-width: 1250px;
+  }
+}
