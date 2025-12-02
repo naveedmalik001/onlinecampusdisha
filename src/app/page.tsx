@@ -781,7 +781,7 @@ export default function Home() {
 
           {/* Enhanced Testimonials Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {testimonials.map((testimonial, index) => (
+            {testimonials.map((testimonial: any, index) => (
               <Card key={index} className="group border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden bg-white rounded-2xl">
                 <CardHeader className="relative p-6 pb-4">
                   {/* Featured Badge for first two */}
