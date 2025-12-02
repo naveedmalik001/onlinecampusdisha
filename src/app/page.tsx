@@ -843,7 +843,7 @@ export default function Home() {
                 <CardContent className="px-6 pb-6">
                   {/* Achievement Tags */}
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {testimonial.achievements.slice(0, 3).map((achievement, achIndex) => (
+                    {testimonial.achievements.slice(0, 3).map((achievement: string, achIndex: number) => (
                       <span key={achIndex} className="inline-flex items-center bg-gradient-to-r from-green-50 to-blue-50 text-green-700 text-xs px-3 py-1.5 rounded-full font-medium border border-green-200">
                         <TrendingUp className="w-3 h-3 mr-1" />
                         {achievement}
