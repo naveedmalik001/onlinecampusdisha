@@ -4,18 +4,12 @@ import { Card, CardContent } from "@/components/ui/card"
 export interface UniversityLogoProps {
   universityName: string
   logoPath?: string
-  description: string
-  accreditation: string[]
-  link: string
   className?: string
 }
 
 export function UniversityLogo({
   universityName,
   logoPath,
-  description,
-  accreditation,
-  link,
   className = ""
 }: UniversityLogoProps) {
   return (

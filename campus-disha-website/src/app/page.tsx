@@ -7,8 +7,6 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import Link from 'next/link'
-import Image from 'next/image'
-import { UniversityLogo } from '@/components/ui/university-logo'
 
 const universities = [
   {
@@ -292,7 +290,7 @@ export default function Home() {
       } else {
         throw new Error('Form submission failed')
       }
-    } catch (error) {
+    } catch {
       setFormErrors({ submit: 'Failed to submit form. Please try again later.' })
     } finally {
       setIsSubmitting(false)
@@ -400,7 +398,7 @@ export default function Home() {
                 Advance Your Career with <span className="text-blue-600">UGC-Recognized</span> Online Degrees
               </h1>
               <p className="text-lg text-gray-600 mb-8">
-                Connect with India's top universities offering UGC-entitled online programs.
+                Connect with India&apos;s top universities offering UGC-entitled online programs.
                 Study at your own pace while maintaining your professional commitments.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -510,7 +508,7 @@ export default function Home() {
 
                 {submitSuccess && (
                   <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
-                    Thank you for your submission! We'll contact you soon.
+                    Thank you for your submission! We&apos;ll contact you soon.
                   </div>
                 )}
 
@@ -646,7 +644,7 @@ export default function Home() {
               Our Partner Universities
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
-              Connect with India's most prestigious universities offering UGC-entitled online programs
+              Connect with India&apos;s most prestigious universities offering UGC-entitled online programs
             </p>
 
             {/* Search Bar */}
@@ -677,7 +675,7 @@ export default function Home() {
               </div>
               {searchTerm && (
                 <p className="text-sm text-gray-600 mt-2">
-                  Found {filteredUniversities.length} universities matching "{searchTerm}"
+                  Found {filteredUniversities.length} universities matching &quot;{searchTerm}&quot;
                 </p>
               )}
             </div>
@@ -846,7 +844,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-700 italic leading-relaxed">
-                    "{testimonial.content}"
+                    &quot;{testimonial.content}&quot;
                   </p>
                 </CardContent>
               </Card>

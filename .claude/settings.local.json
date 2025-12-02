@@ -10,7 +10,8 @@
       "Bash(for:*)",
       "Bash(do echo:*)",
       "Bash(convert:*)",
-      "Bash(npm run build)"
+      "Bash(npm run build)",
+      "Bash(npx tsc:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
