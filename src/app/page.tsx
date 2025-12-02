@@ -251,170 +251,223 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-blue-50 via-white to-purple-50">
-        <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
-                  <Shield className="w-4 h-4 mr-2" />
-                  UGC-Approved Online Degrees
-                </div>
-                <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                  Advance Your Career with
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+      {/* Enhanced Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.03"%3E%3Ccircle cx="7" cy="7" r="1"/%3E%3Ccircle cx="43" cy="7" r="1"/%3E%3Ccircle cx="25" cy="7" r="1"/%3E%3Ccircle cx="7" cy="43" r="1"/%3E%3Ccircle cx="43" cy="43" r="1"/%3E%3Ccircle cx="25" cy="43" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+
+        {/* Floating gradient orbs */}
+        <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+
+        <div className="relative z-10 container mx-auto px-4 pt-20 pb-32">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left Content */}
+            <div className="space-y-8 animate-fade-in">
+              {/* Badge */}
+              <div className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium hover:bg-white/20 transition-all duration-300">
+                <Shield className="w-5 h-5 mr-3 text-blue-400" />
+                UGC-Approved Online Degrees
+                <CheckCircle className="w-4 h-4 ml-2 text-green-400" />
+              </div>
+
+              {/* Main Heading */}
+              <div className="space-y-6">
+                <h1 className="text-5xl lg:text-7xl font-black text-white leading-tight tracking-tight">
+                  Transform Your Future with
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-shift">
                     Online Excellence
                   </span>
                 </h1>
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  Connect with India's top universities offering UGC-entitled online programs.
-                  Study at your own pace while advancing your career.
+
+                <div className="flex items-center space-x-4 text-white/80">
+                  <div className="flex -space-x-2">
+                    <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full border-2 border-white"></div>
+                    <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full border-2 border-white"></div>
+                    <div className="w-10 h-10 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full border-2 border-white"></div>
+                  </div>
+                  <span className="text-lg">Join <span className="font-bold text-white">10,000+ Students</span> already learning</span>
+                </div>
+              </div>
+
+              {/* Enhanced Description */}
+              <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10">
+                <p className="text-xl text-white/90 leading-relaxed">
+                  🎓 Connect with India's <span className="font-bold text-blue-400">top 20+ universities</span> offering UGC-entitled online programs.
+                  <br /><br />
+                  🚀 Study at your own pace with <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">100% flexibility</span> while advancing your career.
                 </p>
               </div>
 
+              {/* Enhanced CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/universities">
-                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700 px-8 py-4 text-lg">
-                    Explore Universities
-                    <ArrowRight className="ml-2 w-5 h-5" />
+                  <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-6 text-lg font-semibold text-white shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300 border border-white/20">
+                    <span className="flex items-center">
+                      Explore Universities
+                      <ArrowRight className="ml-3 w-6 h-6 animate-bounce-right" />
+                    </span>
                   </Button>
                 </Link>
-                <Button size="lg" variant="outline" className="px-8 py-4 text-lg">
-                  <Play className="mr-2 w-5 h-5" />
+                <Button size="lg" variant="outline" className="px-8 py-6 text-lg font-semibold border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 transition-all duration-300">
+                  <Play className="mr-3 w-6 h-6" />
                   Watch Demo
                 </Button>
               </div>
 
-              {/* Stats */}
+              {/* Enhanced Stats with Icons */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
                 {stats.map((stat, index) => (
-                  <div key={index} className="text-center">
-                    <div className="flex justify-center mb-2">
-                      <stat.icon className="w-6 h-6 text-blue-600" />
+                  <div key={index} className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                    <div className="flex justify-center mb-3">
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                        <stat.icon className="w-6 h-6 text-white" />
+                      </div>
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900">{stat.number}</h3>
-                    <p className="text-sm text-gray-600">{stat.label}</p>
+                    <h3 className="text-3xl font-black text-white mb-1">{stat.number}</h3>
+                    <p className="text-sm text-white/70 font-medium">{stat.label}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Enrollment Form */}
-            <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Start Your Journey</h3>
-                <p className="text-gray-600">Get free counseling from our experts</p>
-              </div>
+            {/* Enhanced Enrollment Form */}
+            <div className="relative">
+              {/* Glow effect behind form */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur-3xl opacity-30"></div>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <Input
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={(e) => {
-                      setFormData({...formData, name: e.target.value})
-                      if (formErrors.name) {
-                        setFormErrors({...formErrors, name: ''})
-                      }
-                    }}
-                    className={`border-gray-300 focus:border-blue-500 ${formErrors.name ? 'border-red-500' : ''}`}
-                    required
-                  />
-                  {formErrors.name && (
-                    <p className="text-red-500 text-sm mt-1">{formErrors.name}</p>
-                  )}
-                </div>
-
-                <div>
-                  <Input
-                    type="email"
-                    placeholder="Email Address"
-                    value={formData.email}
-                    onChange={(e) => {
-                      setFormData({...formData, email: e.target.value})
-                      if (formErrors.email) {
-                        setFormErrors({...formErrors, email: ''})
-                      }
-                    }}
-                    className={`border-gray-300 focus:border-blue-500 ${formErrors.email ? 'border-red-500' : ''}`}
-                    required
-                  />
-                  {formErrors.email && (
-                    <p className="text-red-500 text-sm mt-1">{formErrors.email}</p>
-                  )}
-                </div>
-
-                <div>
-                  <Input
-                    type="tel"
-                    placeholder="Phone Number"
-                    value={formData.phone}
-                    onChange={(e) => {
-                      setFormData({...formData, phone: e.target.value})
-                      if (formErrors.phone) {
-                        setFormErrors({...formErrors, phone: ''})
-                      }
-                    }}
-                    className={`border-gray-300 focus:border-blue-500 ${formErrors.phone ? 'border-red-500' : ''}`}
-                    required
-                  />
-                  {formErrors.phone && (
-                    <p className="text-red-500 text-sm mt-1">{formErrors.phone}</p>
-                  )}
-                </div>
-
-                <div>
-                  <Select onValueChange={(value) => {
-                    setFormData({...formData, university: value})
-                    if (formErrors.university) {
-                      setFormErrors({...formErrors, university: ''})
-                    }
-                  }}>
-                    <SelectTrigger className={`border-gray-300 focus:border-blue-500 ${formErrors.university ? 'border-red-500' : ''}`}>
-                      <SelectValue placeholder="Select University" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {universities.map((uni) => (
-                        <SelectItem key={uni.name} value={uni.name}>{uni.name}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  {formErrors.university && (
-                    <p className="text-red-500 text-sm mt-1">{formErrors.university}</p>
-                  )}
-                </div>
-
-                {submitSuccess && (
-                  <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg">
-                    Thank you for your submission! We'll contact you soon.
+              <div className="relative bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl p-8 border border-white/20">
+                <div className="text-center mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <Award className="w-8 h-8 text-white" />
                   </div>
-                )}
+                  <h3 className="text-3xl font-bold text-white mb-3">Start Your Journey</h3>
+                  <p className="text-white/80">Get free counseling from our education experts</p>
+                </div>
 
-                {formErrors.submit && (
-                  <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg">
-                    {formErrors.submit}
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="relative">
+                    <Input
+                      placeholder="Your Full Name"
+                      value={formData.name}
+                      onChange={(e) => {
+                        setFormData({...formData, name: e.target.value})
+                        if (formErrors.name) {
+                          setFormErrors({...formErrors, name: ''})
+                        }
+                      }}
+                      className={`bg-white/10 border-white/20 text-white placeholder-white/60 focus:border-blue-400 focus:bg-white/15 ${formErrors.name ? 'border-red-500' : ''}`}
+                      required
+                    />
+                    {formErrors.name && (
+                      <p className="text-red-400 text-sm mt-1 animate-shake">{formErrors.name}</p>
+                    )}
                   </div>
-                )}
 
-                <Button
-                  type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 py-3 text-lg"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <div className="flex items-center justify-center">
-                      <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
-                      </svg>
-                      Processing...
+                  <div className="relative">
+                    <Input
+                      type="email"
+                      placeholder="Email Address"
+                      value={formData.email}
+                      onChange={(e) => {
+                        setFormData({...formData, email: e.target.value})
+                        if (formErrors.email) {
+                          setFormErrors({...formErrors, email: ''})
+                        }
+                      }}
+                      className={`bg-white/10 border-white/20 text-white placeholder-white/60 focus:border-blue-400 focus:bg-white/15 ${formErrors.email ? 'border-red-500' : ''}`}
+                      required
+                    />
+                    {formErrors.email && (
+                      <p className="text-red-400 text-sm mt-1 animate-shake">{formErrors.email}</p>
+                    )}
+                  </div>
+
+                  <div className="relative">
+                    <Input
+                      type="tel"
+                      placeholder="Phone Number"
+                      value={formData.phone}
+                      onChange={(e) => {
+                        setFormData({...formData, phone: e.target.value})
+                        if (formErrors.phone) {
+                          setFormErrors({...formErrors, phone: ''})
+                        }
+                      }}
+                      className={`bg-white/10 border-white/20 text-white placeholder-white/60 focus:border-blue-400 focus:bg-white/15 ${formErrors.phone ? 'border-red-500' : ''}`}
+                      required
+                    />
+                    {formErrors.phone && (
+                      <p className="text-red-400 text-sm mt-1 animate-shake">{formErrors.phone}</p>
+                    )}
+                  </div>
+
+                  <div className="relative">
+                    <Select onValueChange={(value) => {
+                      setFormData({...formData, university: value})
+                      if (formErrors.university) {
+                        setFormErrors({...formErrors, university: ''})
+                      }
+                    }}>
+                      <SelectTrigger className={`bg-white/10 border-white/20 text-white focus:border-blue-400 focus:bg-white/15 ${formErrors.university ? 'border-red-500' : ''}`}>
+                        <SelectValue placeholder="Select University" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-slate-900 border-white/20">
+                        {universities.map((uni) => (
+                          <SelectItem key={uni.name} value={uni.name} className="text-white hover:bg-white/10">{uni.name}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    {formErrors.university && (
+                      <p className="text-red-400 text-sm mt-1 animate-shake">{formErrors.university}</p>
+                    )}
+                  </div>
+
+                  {submitSuccess && (
+                    <div className="bg-green-500/20 border border-green-500/50 text-green-400 px-4 py-4 rounded-xl animate-slide-down">
+                      ✅ Thank you for your submission! We'll contact you soon.
                     </div>
-                  ) : (
-                    'Get Free Counseling'
                   )}
-                </Button>
-              </form>
+
+                  {formErrors.submit && (
+                    <div className="bg-red-500/20 border border-red-500/50 text-red-400 px-4 py-4 rounded-xl animate-shake">
+                      {formErrors.submit}
+                    </div>
+                  )}
+
+                  <Button
+                    type="submit"
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 py-4 text-lg font-semibold text-white shadow-2xl hover:shadow-blue-500/25 transform hover:scale-[1.02] transition-all duration-300"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <div className="flex items-center justify-center">
+                        <svg className="animate-spin h-6 w-6 mr-3" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                        </svg>
+                        Processing...
+                      </div>
+                    ) : (
+                      <span className="flex items-center justify-center">
+                        🚀 Get Free Counseling
+                      </span>
+                    )}
+                  </Button>
+                </form>
+
+                {/* Trust indicators */}
+                <div className="mt-6 pt-6 border-t border-white/20">
+                  <p className="text-center text-white/60 text-sm mb-3">Trusted by students across India</p>
+                  <div className="flex justify-center space-x-4">
+                    <Shield className="w-5 h-5 text-green-400" />
+                    <span className="text-white/80 text-sm">100% Secure</span>
+                    <Award className="w-5 h-5 text-blue-400 ml-4" />
+                    <span className="text-white/80 text-sm">Expert Guidance</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
