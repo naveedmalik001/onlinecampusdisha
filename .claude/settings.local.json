@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__zai-mcp-server__analyze_image",
+      "Bash(npx create-next-app:*)",
+      "Bash(npx shadcn@latest init:*)",
+      "mcp__web-search-prime__webSearchPrime",
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(npm run dev)",
+      "Bash(for:*)",
+      "Bash(do echo:*)",
+      "Bash(convert:*)",
+      "Bash(npm run build)",
+      "Bash(npx tsc:*)",
+      "Bash(curl:*)",
+      "Bash(npm install:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "zai-mcp-server",
+    "web-search-prime"
+  ]
+}
