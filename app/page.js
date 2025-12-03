@@ -92,10 +92,7 @@ export default function HomePage() {
     }
   ]
 
-  const handleApplyClick = (university) => {
-    console.log(`Apply clicked for ${university.name}`)
-  }
-
+  
   return (
     <div>
       <Header />
@@ -135,7 +132,6 @@ export default function HomePage() {
                 <UniversityCard
                   key={university.id}
                   university={university}
-                  onApplyClick={handleApplyClick}
                 />
               ))}
             </div>

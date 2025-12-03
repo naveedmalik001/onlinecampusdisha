@@ -1,9 +1,9 @@
-export default function UniversityCard({ university, onApplyClick }) {
+'use client'
+
+export default function UniversityCard({ university }) {
   const handleApplyClick = (e) => {
     e.preventDefault()
-    if (onApplyClick) {
-      onApplyClick(university)
-    }
+    console.log(`Apply clicked for ${university.name}`)
   }
 
   return (

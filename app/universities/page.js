@@ -55,10 +55,7 @@ export default function UniversitiesPage() {
     return filtered
   }, [searchTerm, selectedState, selectedProgram, sortBy])
 
-  const handleApplyClick = (university) => {
-    console.log(`Apply clicked for ${university.name}`)
-  }
-
+  
   const clearFilters = () => {
     setSearchTerm('')
     setSelectedState('')
@@ -204,7 +201,6 @@ export default function UniversitiesPage() {
                   <UniversityCard
                     key={university.id}
                     university={university}
-                    onApplyClick={handleApplyClick}
                   />
                 ))}
               </div>

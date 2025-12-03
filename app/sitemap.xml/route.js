@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
-import universities from '../../../data/universities.json'
+import { readFileSync } from 'fs'
+import { join } from 'path'
 
 const siteUrl = 'https://campusdisha.com'
 
@@ -17,6 +18,9 @@ export async function GET() {
     '/privacy',
   ]
 
+  // Read universities data using file system
+  const universitiesPath = join(process.cwd(), 'data', 'universities.json')
+  const universities = JSON.parse(readFileSync(universitiesPath, 'utf8'))
   const universityPages = universities.map(uni => `/universities/${uni.slug}`)
 
   const allPages = [...staticPages, ...universityPages]

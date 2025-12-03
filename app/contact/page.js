@@ -108,7 +108,7 @@ export default function ContactPage() {
       subtext: 'We respond within 24 hours'
     },
     {
-      icon: bi-geo-alt-fill,
+      icon: 'bi-geo-alt-fill',
       title: 'Office Address',
       content: 'Delhi, India',
       subtext: 'By appointment only'

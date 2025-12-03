@@ -213,7 +213,7 @@ export default function TrendsPage() {
                           <td><strong>{program.name}</strong></td>
                           <td><span className="badge bg-success">+{program.growth}</span></td>
                           <td>{program.students}</td>
-                          <td>{program.includes('M.') ? '2 Years' : '3 Years'}</td>
+                          <td>{program.name.includes('M.') ? '2 Years' : '3 Years'}</td>
                           <td>₹1-3 Lakhs</td>
                         </tr>
                       ))}
