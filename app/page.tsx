@@ -2,11 +2,29 @@ import Header from '../components/shared/Header'
 import Footer from '../components/shared/Footer'
 import Hero from '../components/shared/Hero'
 import UniversityCard from '../components/shared/UniversityCard'
+import TopPartnerUniversities from '../components/sections/TopPartnerUniversities'
+import OnlineVsTraditional from '../components/sections/OnlineVsTraditional'
+import FAQs from '../components/sections/FAQs'
 import universities from '../data/universities.json'
+
+// Type definitions for universities
+interface University {
+  id: number
+  name: string
+  slug: string
+  location: string
+  landing?: string
+  established?: string
+  description: string
+  programs: string[]
+  accredited: boolean
+  rating?: number
+  image_url?: string
+}
 
 export default function HomePage() {
   // Display first 6 universities on homepage
-  const featuredUniversities = universities.slice(0, 6)
+  const featuredUniversities: University[] = (universities as University[]).slice(0, 6)
 
   const stats = [
     {
@@ -120,30 +138,7 @@ export default function HomePage() {
         </section>
 
         {/* Featured Universities Section */}
-        <section className="section bg-light">
-          <div className="container">
-            <h2 className="section-title">Top Partner Universities</h2>
-            <p className="section-subtitle">
-              Accredited institutions offering quality online education programs
-            </p>
-
-            <div className="row">
-              {featuredUniversities.map((university) => (
-                <UniversityCard
-                  key={university.id}
-                  university={university}
-                />
-              ))}
-            </div>
-
-            <div className="text-center mt-4">
-              <a href="/universities" className="btn btn-primary btn-lg">
-                <i className="bi bi-grid-3x3-gap me-2"></i>
-                View All Universities
-              </a>
-            </div>
-          </div>
-        </section>
+        <TopPartnerUniversities universities={universities} />
 
         {/* How It Works Section */}
         <section className="section">
@@ -172,93 +167,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Online vs Traditional Section Preview */}
-        <section className="section bg-light">
-          <div className="container">
-            <div className="row align-items-center">
-              <div className="col-lg-6">
-                <h2 className="section-title text-start">Online vs Traditional Degrees</h2>
-                <p className="text-muted mb-4">
-                  Choose the learning format that best fits your lifestyle and career goals
-                </p>
-
-                <div className="row g-3">
-                  <div className="col-12">
-                    <div className="d-flex align-items-start">
-                      <i className="bi bi-check-circle-fill text-success me-3 mt-1"></i>
-                      <div>
-                        <strong>Flexibility:</strong> Study at your own pace, anytime anywhere
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    <div className="d-flex align-items-start">
-                      <i className="bi bi-check-circle-fill text-success me-3 mt-1"></i>
-                      <div>
-                        <strong>Cost-Effective:</strong> Save on accommodation and transportation
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    <div className="d-flex align-items-start">
-                      <i className="bi bi-check-circle-fill text-success me-3 mt-1"></i>
-                      <div>
-                        <strong>Equal Recognition:</strong> UGC ensures online degrees have same value as regular degrees
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    <div className="d-flex align-items-start">
-                      <i className="bi bi-check-circle-fill text-success me-3 mt-1"></i>
-                      <div>
-                        <strong>Work-Study Balance:</strong> Continue working while pursuing education
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-4">
-                  <a href="/online-vs-traditional" className="btn btn-outline-primary">
-                    <i className="bi bi-arrow-right me-2"></i>
-                    Learn Detailed Comparison
-                  </a>
-                </div>
-              </div>
-              <div className="col-lg-6">
-                <div className="card border-0 shadow-lg">
-                  <div className="card-body p-4">
-                    <h4 className="mb-3">Quick Comparison</h4>
-                    <table className="table table-borderless">
-                      <tbody>
-                        <tr>
-                          <td><strong>Format</strong></td>
-                          <td><span className="badge bg-primary">Flexible</span></td>
-                          <td><span className="badge bg-secondary">Fixed Schedule</span></td>
-                        </tr>
-                        <tr>
-                          <td><strong>Cost</strong></td>
-                          <td className="text-success">Lower</td>
-                          <td className="text-warning">Higher</td>
-                        </tr>
-                        <tr>
-                          <td><strong>Validation</strong></td>
-                          <td colSpan="2" className="text-center">
-                            <i className="bi bi-check-circle-fill text-success"></i> Equal Recognition (UGC)
-                          </td>
-                        </tr>
-                        <tr>
-                          <td><strong>Learning Pace</strong></td>
-                          <td>Self-paced</td>
-                          <td>Structured</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Online vs Traditional Section */}
+        <OnlineVsTraditional />
 
         {/* Testimonials Section */}
         <section className="section">
@@ -299,53 +209,7 @@ export default function HomePage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="section bg-light">
-          <div className="container">
-            <h2 className="section-title">Frequently Asked Questions</h2>
-            <p className="section-subtitle">
-              Get answers to common questions about online degree programs
-            </p>
-
-            <div className="row justify-content-center">
-              <div className="col-lg-8">
-                <div className="accordion" id="faqAccordion">
-                  {faqs.map((faq, index) => (
-                    <div className="accordion-item border-0 shadow-sm mb-3" key={index}>
-                      <h2 className="accordion-header">
-                        <button
-                          className="accordion-button"
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target={`#faq${index}`}
-                          aria-expanded={index === 0}
-                          aria-controls={`faq${index}`}
-                        >
-                          {faq.question}
-                        </button>
-                      </h2>
-                      <div
-                        id={`faq${index}`}
-                        className={`accordion-collapse collapse ${index === 0 ? 'show' : ''}`}
-                        data-bs-parent="#faqAccordion"
-                      >
-                        <div className="accordion-body">
-                          {faq.answer}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="text-center mt-4">
-                  <a href="/faq" className="btn btn-outline-primary">
-                    <i className="bi bi-question-circle me-2"></i>
-                    View All FAQs
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <FAQs />
 
         {/* CTA Section */}
         <section className="section bg-primary text-white">

@@ -17,7 +17,8 @@
       "Bash(\"C:\\Program Files\\nodejs\\npm.exe\" run build)",
       "Bash(yarn install:*)",
       "Bash(\"/mnt/c/Program Files/nodejs/npm.cmd\" install:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(\"/c/Program Files/nodejs/npm.cmd\" --version)"
     ]
   },
   "enableAllProjectMcpServers": true,
