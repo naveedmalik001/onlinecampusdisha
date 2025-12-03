@@ -12,7 +12,8 @@
       "Bash(convert:*)",
       "Bash(npm run build)",
       "Bash(npx tsc:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(npm install:*)"
     ]
   },
   "enableAllProjectMcpServers": true,

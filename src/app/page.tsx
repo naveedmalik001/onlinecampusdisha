@@ -5,8 +5,13 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import HeroCarousel from '@/components/ui/hero-carousel'
+import Pagination from '@/components/ui/pagination'
+import Carousel from '@/components/ui/carousel'
 import Link from 'next/link'
 import { ArrowRight, ChevronRight, Star, CheckCircle, TrendingUp, Users, Award, BookOpen, MapPin, Phone, Mail, Clock, Play, Shield, Globe, DollarSign, Target } from 'lucide-react'
+import { StarIcon, AcademicCapIcon, BuildingOfficeIcon, SparklesIcon, FireIcon, LightBulbIcon } from '@heroicons/react/24/outline'
+import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid'
 
 const universities = [
   {
@@ -545,6 +550,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Hero Carousel Section */}
+      <section className="py-8 lg:py-12 px-4 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-blue-900">
+        <div className="container mx-auto">
+          <HeroCarousel />
+        </div>
+      </section>
+
       {/* Benefits Section */}
       <section className="py-20 px-4 bg-white">
         <div className="container mx-auto">
@@ -616,9 +628,21 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {universities.map((university, index) => (
-              <Card key={university.name} className="group border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden bg-white rounded-2xl">
+          {/* Universities Carousel */}
+          <div className="mb-12">
+            <Carousel
+              slidesToShow={3}
+              slidesToScroll={1}
+              autoplay={true}
+              autoplayInterval={4000}
+              showDots={true}
+              showArrows={true}
+              infinite={true}
+              className="universities-carousel"
+            >
+              {universities.map((university, index) => (
+                <div key={university.name} className="px-4">
+                  <Card className="group border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden bg-white rounded-2xl h-full">
                 <CardHeader className="text-center p-6 pb-4 relative">
                   {/* University Badge */}
                   <div className="absolute top-4 right-4 bg-gradient-to-r from-green-500 to-green-600 text-white text-xs px-3 py-1 rounded-full font-semibold z-10">
@@ -695,8 +719,10 @@ export default function Home() {
                     </span>
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+                </Card>
+                </div>
+              ))}
+            </Carousel>
           </div>
 
           {/* Additional Universities Info */}
@@ -719,6 +745,110 @@ export default function Home() {
                 </Button>
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Carousel Section */}
+      <section className="py-16 lg:py-20 px-4 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
+        <div className="container mx-auto">
+          <div className="text-center mb-12 lg:mb-16">
+            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 rounded-full text-sm font-medium mb-6">
+              <StarIcon className="w-5 h-5 mr-2" />
+              Student Testimonials
+            </div>
+            <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">What Our Students Say</h2>
+            <p className="text-lg lg:text-xl text-gray-600 max-w-4xl mx-auto">
+              Hear directly from our students about their transformative learning experience
+            </p>
+          </div>
+
+          <Carousel
+            slidesToShow={1}
+            slidesToScroll={1}
+            autoplay={true}
+            autoplayInterval={6000}
+            showDots={true}
+            showArrows={true}
+            infinite={true}
+            className="testimonials-carousel max-w-4xl mx-auto"
+          >
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="px-4">
+                <Card className="group border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden bg-white rounded-2xl">
+                  <CardHeader className="relative p-6 lg:p-8 pb-4">
+                    {/* Featured Badge */}
+                    {index < 2 && (
+                      <div className="absolute top-4 right-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs px-3 py-1 rounded-full font-semibold z-10 animate-pulse">
+                        <StarIconSolid className="w-3 h-3 mr-1 inline" />
+                        Featured
+                      </div>
+                    )}
+
+                    {/* Student Profile */}
+                    <div className="flex items-start space-x-4 mb-6">
+                      <div className="relative">
+                        {/* Avatar placeholder */}
+                        <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl lg:text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300">
+                          {testimonial.name.split(' ').map((n: string) => n[0]).join('')}
+                        </div>
+                        {/* Program Badge */}
+                        <div className="absolute -bottom-2 -right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded-full">
+                          {testimonial.program}
+                        </div>
+                      </div>
+
+                      <div className="flex-1">
+                        <div className="mb-2">
+                          <CardTitle className="text-xl lg:text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                            {testimonial.name}
+                          </CardTitle>
+                          <CardDescription className="text-sm lg:text-base text-gray-600 font-medium">
+                            {testimonial.role}
+                          </CardDescription>
+                        </div>
+
+                        {/* Rating */}
+                        <div className="flex items-center space-x-1">
+                          {[...Array(testimonial.rating)].map((_, i) => (
+                            <StarIconSolid key={i} className="h-5 w-5 text-yellow-400" />
+                          ))}
+                          <span className="ml-2 text-sm text-gray-500">({testimonial.rating}/5)</span>
+                        </div>
+                      </div>
+                    </div>
+                  </CardHeader>
+
+                  <CardContent className="px-6 lg:px-8 pb-6 lg:pb-8">
+                    <CardContent className="text-gray-700 text-lg lg:text-xl leading-relaxed italic">
+                      "{testimonial.content}"
+                    </CardContent>
+
+                    {/* Verification Badge */}
+                    <div className="mt-6 flex items-center justify-between">
+                      <div className="flex items-center text-blue-600 text-sm font-medium">
+                        <Shield className="w-4 h-4 mr-1" />
+                        Verified Student Review
+                      </div>
+                      <div className="flex items-center text-green-600 text-sm font-medium">
+                        <CheckCircle className="w-4 h-4 mr-1" />
+                        {testimonial.program} Graduate
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
+          </Carousel>
+
+          {/* View All Testimonials */}
+          <div className="text-center mt-12">
+            <Link href="/success-stories">
+              <Button size="lg" className="group">
+                View All Success Stories
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
