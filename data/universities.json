@@ -1,0 +1,233 @@
+[
+  {
+    "id": 1,
+    "name": "NMIMS Online",
+    "slug": "nmims-online",
+    "location": "Mumbai, Maharashtra",
+    "landing": "https://nmims.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=Nimmsonline",
+    "programs": ["MBA", "BBA", "MCA", "BCA", "M.Com", "B.Com"],
+    "description": "Narsee Monjee Institute of Management Studies is one of India's premier universities offering accredited online degree programs.",
+    "accredited": true,
+    "established": "1981"
+  },
+  {
+    "id": 2,
+    "name": "SRM Online",
+    "slug": "srm-online",
+    "location": "Chennai, Tamil Nadu",
+    "landing": "https://srm.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=srmonline",
+    "programs": ["MBA", "BBA", "MCA", "BCA", "B.Sc", "M.Sc"],
+    "description": "SRM Institute of Science and Technology offers comprehensive online programs with industry-aligned curriculum.",
+    "accredited": true,
+    "established": "1985"
+  },
+  {
+    "id": 3,
+    "name": "Parul Online",
+    "slug": "parul-online",
+    "location": "Vadodara, Gujarat",
+    "landing": "https://parul.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=parulonline",
+    "programs": ["MBA", "BBA", "MCA", "BCA", "B.A", "B.Com"],
+    "description": "Parul University offers a wide range of online programs with focus on practical learning and skill development.",
+    "accredited": true,
+    "established": "2015"
+  },
+  {
+    "id": 4,
+    "name": "DPU Mumbai",
+    "slug": "dpu-mumbai",
+    "location": "Mumbai, Maharashtra",
+    "landing": "https://dpumumbai.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=dpumumbai",
+    "programs": ["MBA", "BBA", "MCA", "BCA", "B.Com", "B.Sc"],
+    "description": "Dr. D.Y. Patil Vidyapeeth is a deemed-to-be university known for excellence in online education.",
+    "accredited": true,
+    "established": "2003"
+  },
+  {
+    "id": 5,
+    "name": "Galgotias Online",
+    "slug": "galgotias-online",
+    "location": "Greater Noida, UP",
+    "landing": "https://galgotias.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=galtiosonline",
+    "programs": ["MBA", "BBA", "MCA", "BCA", "B.Tech", "M.Tech"],
+    "description": "Galgotias University offers industry-relevant online programs with strong placement support.",
+    "accredited": true,
+    "established": "2011"
+  },
+  {
+    "id": 6,
+    "name": "UPES Online",
+    "slug": "upes-online",
+    "location": "Dehradun, Uttarakhand",
+    "landing": "https://upes.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=upesonline",
+    "programs": ["MBA", "BBA", "MCA", "BCA", "B.Sc", "M.Sc"],
+    "description": "University of Petroleum and Energy Studies specializes in energy and management programs.",
+    "accredited": true,
+    "established": "2003"
+  },
+  {
+    "id": 7,
+    "name": "VGU Online",
+    "slug": "vgu-online",
+    "location": "Jaipur, Rajasthan",
+    "landing": "https://vgu.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=vigyanuniversityonline",
+    "programs": ["MBA", "BBA", "MCA", "BCA", "B.A", "B.Com"],
+    "description": "Vivekananda Global University offers diverse online programs with focus on holistic education.",
+    "accredited": true,
+    "established": "2008"
+  },
+  {
+    "id": 8,
+    "name": "Andhra University Online",
+    "slug": "andhra-online",
+    "location": "Visakhapatnam, Andhra Pradesh",
+    "landing": "https://andhra.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=andhrauniversity",
+    "programs": ["MBA", "MCA", "M.Com", "M.A", "B.A", "B.Com"],
+    "description": "Andhra University is one of the oldest universities in India offering quality online education.",
+    "accredited": true,
+    "established": "1926"
+  },
+  {
+    "id": 9,
+    "name": "MAHE Online",
+    "slug": "mahe-online",
+    "location": "Manipal, Karnataka",
+    "landing": "https://mahe.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=MAHEUNIVERISTY",
+    "programs": ["MBA", "MCA", "BCA", "BBA", "B.Com", "B.Sc"],
+    "description": "Manipal Academy of Higher Education is a prestigious institution offering world-class online programs.",
+    "accredited": true,
+    "established": "1953"
+  },
+  {
+    "id": 10,
+    "name": "Sikkim Manipal University Online",
+    "slug": "smu-online",
+    "location": "Gangtok, Sikkim",
+    "landing": "https://smu.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=sikkimmanipalonline",
+    "programs": ["MBA", "MCA", "BCA", "BBA", "B.A", "B.Com"],
+    "description": "Sikkim Manipal University is a pioneer in distance and online education in India.",
+    "accredited": true,
+    "established": "1995"
+  },
+  {
+    "id": 11,
+    "name": "Kurukshetra University Online",
+    "slug": "kurukshetra-online",
+    "location": "Kurukshetra, Haryana",
+    "landing": "https://kurukshetra.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=kurukshetraonline",
+    "programs": ["MBA", "MCA", "BCA", "M.A", "B.A", "B.Com"],
+    "description": "Kurukshetra University is a state university known for academic excellence and research.",
+    "accredited": true,
+    "established": "1956"
+  },
+  {
+    "id": 12,
+    "name": "Shoolini University Online",
+    "slug": "shoolini-online",
+    "location": "Solan, Himachal Pradesh",
+    "landing": "https://shoolini.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=shoolini",
+    "programs": ["MBA", "BBA", "MCA", "BCA", "B.Sc", "M.Sc"],
+    "description": "Shoolini University is a research-focused institution offering innovative online programs.",
+    "accredited": true,
+    "established": "2009"
+  },
+  {
+    "id": 13,
+    "name": "GLA Online",
+    "slug": "gla-online",
+    "location": "Mathura, Uttar Pradesh",
+    "landing": "https://gla.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=glaonlinelandingpage",
+    "programs": ["MBA", "BBA", "MCA", "BCA", "B.Tech", "B.Com"],
+    "description": "GLA University offers comprehensive online programs with industry-relevant curriculum.",
+    "accredited": true,
+    "established": "1998"
+  },
+  {
+    "id": 14,
+    "name": "Chandigarh University Online",
+    "slug": "chandigarh-online",
+    "location": "Mohali, Punjab",
+    "landing": "https://cuol.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=chandigarhonline",
+    "programs": ["MBA", "BBA", "MCA", "BCA", "B.Com", "B.Sc"],
+    "description": "Chandigarh University is a modern institution offering cutting-edge online education programs.",
+    "accredited": true,
+    "established": "2012"
+  },
+  {
+    "id": 15,
+    "name": "Uttaranchal University Online",
+    "slug": "uttaranchal-online",
+    "location": "Dehradun, Uttarakhand",
+    "landing": "https://uttaranchal.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=utaranchalonlinelandingpage",
+    "programs": ["MBA", "BBA", "MCA", "BCA", "B.A", "B.Com"],
+    "description": "Uttaranchal University offers diverse online programs with focus on holistic development.",
+    "accredited": true,
+    "established": "2013"
+  },
+  {
+    "id": 16,
+    "name": "DPU Online Pune",
+    "slug": "dpu-pune",
+    "location": "Pune, Maharashtra",
+    "landing": "https://dpupune.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=dpuonlinelandingpage",
+    "programs": ["MBA", "BBA", "MCA", "BCA", "B.Sc", "M.Sc"],
+    "description": "DPU Pune offers quality online education with strong emphasis on practical skills.",
+    "accredited": true,
+    "established": "2010"
+  },
+  {
+    "id": 17,
+    "name": "Amity Online",
+    "slug": "amity-online",
+    "location": "Noida, Uttar Pradesh",
+    "landing": "https://amity.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=amityonline",
+    "programs": ["MBA", "BBA", "MCA", "BCA", "B.Com", "B.A"],
+    "description": "Amity University is a premier institution offering world-class online education programs.",
+    "accredited": true,
+    "established": "2005"
+  },
+  {
+    "id": 18,
+    "name": "Manipal University Online",
+    "slug": "manipal-online",
+    "location": "Jaipur, Rajasthan",
+    "landing": "https://muj.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=ManipalLandingpage",
+    "programs": ["MBA", "BBA", "MCA", "BCA", "B.Tech", "B.Com"],
+    "description": "Manipal University Jaipur offers innovative online programs with global perspective.",
+    "accredited": true,
+    "established": "2011"
+  },
+  {
+    "id": 19,
+    "name": "Amrita Online",
+    "slug": "amrita-online",
+    "location": "Coimbatore, Tamil Nadu",
+    "landing": "https://lpu.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=ApplyforLPUONLINE",
+    "programs": ["MBA", "BBA", "MCA", "BCA", "B.Sc", "M.Sc"],
+    "description": "Amrita Vishwa Vidyapeetham offers values-based online education with global standards.",
+    "accredited": true,
+    "established": "2003"
+  },
+  {
+    "id": 20,
+    "name": "LPU Online",
+    "slug": "lpu-online",
+    "location": "Phagwara, Punjab",
+    "landing": "https://lpu.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=ApplyforLPUONLINE",
+    "programs": ["MBA", "BBA", "MCA", "BCA", "B.Com", "B.Tech"],
+    "description": "Lovely Professional University is India's largest private university offering diverse online programs.",
+    "accredited": true,
+    "established": "2005"
+  },
+  {
+    "id": 21,
+    "name": "Jain University Online",
+    "slug": "jain-online",
+    "location": "Bangalore, Karnataka",
+    "landing": "https://jain.universityadmission.co.in/?source_campaign=LAM%20Influencer&campaign_name=2845&ad_group_name=General&ads_name=jainonlinelandingpage",
+    "programs": ["MBA", "BBA", "MCA", "BCA", "B.Com", "B.Sc"],
+    "description": "Jain University is a deemed-to-be university known for academic excellence and innovation.",
+    "accredited": true,
+    "established": "1990"
+  }
+]
