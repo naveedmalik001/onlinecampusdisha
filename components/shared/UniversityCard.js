@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 export default function UniversityCard({ university }) {
   const handleApplyClick = (e) => {
     e.preventDefault()
@@ -79,13 +81,13 @@ export default function UniversityCard({ university }) {
               <i className="bi bi-box-arrow-up-right me-2"></i>
               Apply Now
             </a>
-            <a
+            <Link
               href={`/universities/${university.slug}`}
               className="btn btn-outline-secondary"
             >
               <i className="bi bi-info-circle me-2"></i>
               View Details
-            </a>
+            </Link>
           </div>
         </div>
       </div>

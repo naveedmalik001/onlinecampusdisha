@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -31,10 +32,10 @@ export default function Header() {
   return (
     <nav className={`navbar navbar-expand-lg navbar-light fixed-top ${isScrolled ? 'sticky' : ''}`}>
       <div className="container">
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" href="/">
           <i className="bi bi-mortarboard-fill me-2"></i>
           Campus Disha
-        </a>
+        </Link>
 
         <button
           className="navbar-toggler"
@@ -53,30 +54,30 @@ export default function Header() {
           <ul className="navbar-nav mx-auto">
             {navItems.map((item) => (
               <li className="nav-item" key={item.name}>
-                <a className="nav-link" href={item.href} onClick={() => setIsMobileMenuOpen(false)}>
+                <Link className="nav-link" href={item.href} onClick={() => setIsMobileMenuOpen(false)}>
                   {item.name}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
 
           <div className="d-flex gap-2">
-            <a
+            <Link
               href="/contact"
               className="btn btn-outline-primary"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <i className="bi bi-telephone me-1"></i>
               Contact
-            </a>
-            <a
+            </Link>
+            <Link
               href="/universities"
               className="btn btn-primary"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <i className="bi bi-arrow-right-circle me-1"></i>
               Apply Now
-            </a>
+            </Link>
           </div>
         </div>
       </div>

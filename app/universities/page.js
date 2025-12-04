@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useMemo } from 'react'
+import Link from 'next/link'
 import Header from '../../components/shared/Header'
 import Footer from '../../components/shared/Footer'
 import UniversityCard from '../../components/shared/UniversityCard'
@@ -308,14 +309,14 @@ export default function UniversitiesPage() {
               Our expert counselors will help you find the perfect program based on your career goals
             </p>
             <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-              <a href="/contact" className="btn btn-light btn-lg">
+              <Link href="/contact" className="btn btn-light btn-lg">
                 <i className="bi bi-telephone me-2"></i>
                 Schedule Free Counseling
-              </a>
-              <a href="/trends" className="btn btn-outline-light btn-lg">
+              </Link>
+              <Link href="/trends" className="btn btn-outline-light btn-lg">
                 <i className="bi bi-graph-up me-2"></i>
                 Explore Online Education Trends
-              </a>
+              </Link>
             </div>
           </div>
         </section>

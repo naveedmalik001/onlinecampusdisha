@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
@@ -35,16 +37,16 @@ export default function Footer() {
               of online education in India and connect you with accredited universities.
             </p>
             <div className="d-flex gap-3 mt-3">
-              <a href="#" className="text-white-50 fs-5" aria-label="Facebook">
+              <a href="#" className="text-white-50 fs-5" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                 <i className="bi bi-facebook"></i>
               </a>
-              <a href="#" className="text-white-50 fs-5" aria-label="Twitter">
+              <a href="#" className="text-white-50 fs-5" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
                 <i className="bi bi-twitter"></i>
               </a>
-              <a href="#" className="text-white-50 fs-5" aria-label="LinkedIn">
+              <a href="#" className="text-white-50 fs-5" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
                 <i className="bi bi-linkedin"></i>
               </a>
-              <a href="#" className="text-white-50 fs-5" aria-label="Instagram">
+              <a href="#" className="text-white-50 fs-5" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                 <i className="bi bi-instagram"></i>
               </a>
             </div>
@@ -56,9 +58,9 @@ export default function Footer() {
             <ul className="list-unstyled">
               {quickLinks.map((link) => (
                 <li key={link.name} className="mb-2">
-                  <a href={link.href} className="footer-link">
+                  <Link href={link.href} className="footer-link">
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -70,9 +72,9 @@ export default function Footer() {
             <ul className="list-unstyled">
               {importantLinks.map((link) => (
                 <li key={link.name} className="mb-2">
-                  <a href={link.href} className="footer-link">
+                  <Link href={link.href} className="footer-link">
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -134,9 +136,9 @@ export default function Footer() {
           <div className="col-md-6 text-md-end">
             <div className="d-inline-flex gap-3">
               {legalLinks.map((link) => (
-                <a key={link.name} href={link.href} className="footer-link small">
+                <Link key={link.name} href={link.href} className="footer-link small">
                   {link.name}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
