@@ -2,6 +2,13 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import {
+  AcademicCapIcon,
+  PhoneIcon,
+  CalendarDaysIcon,
+  Bars3Icon,
+  XMarkIcon
+} from '@heroicons/react/24/solid'
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -32,21 +39,25 @@ export default function Header() {
   return (
     <nav className={`navbar navbar-expand-lg navbar-light fixed-top ${isScrolled ? 'sticky scrolled' : ''}`}>
       <div className="container">
-        <Link className="navbar-brand fw-bold fs-4" href="/" style={{color: isScrolled ? '#0d6efd' : '#ffffff'}}>
-          <i className="bi bi-mortarboard-fill me-2"></i>
+        <Link className="navbar-brand fw-bold fs-4 d-flex align-items-center" href="/" style={{ color: isScrolled ? '#3b82f6' : '#ffffff' }}>
+          <AcademicCapIcon className="me-2" style={{ width: '32px', height: '32px' }} />
           Campus Disha
         </Link>
 
         <button
-          className="navbar-toggler"
+          className="navbar-toggler border-0"
           type="button"
           aria-controls="navbarNav"
           aria-expanded={isMobileMenuOpen ? "true" : "false"}
           aria-label="Toggle navigation"
           onClick={toggleMobileMenu}
-          style={{border: 'none', boxShadow: 'none'}}
+          style={{ boxShadow: 'none', padding: '0.5rem' }}
         >
-          <span className={`navbar-toggler-icon ${isScrolled ? '' : 'custom-light'}`}></span>
+          {isMobileMenuOpen ? (
+            <XMarkIcon style={{ width: '28px', height: '28px', color: isScrolled ? '#333' : '#fff' }} />
+          ) : (
+            <Bars3Icon style={{ width: '28px', height: '28px', color: isScrolled ? '#333' : '#fff' }} />
+          )}
         </button>
 
         <div className={`collapse navbar-collapse ${isMobileMenuOpen ? 'show' : ''}`} id="navbarNav">
@@ -57,7 +68,7 @@ export default function Header() {
                   className="nav-link fw-semibold px-3"
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  style={{color: isScrolled ? '#333333' : '#ffffff', transition: 'color 0.3s ease'}}
+                  style={{ color: isScrolled ? '#333333' : '#ffffff', transition: 'color 0.3s ease' }}
                 >
                   {item.name}
                 </Link>
@@ -65,33 +76,30 @@ export default function Header() {
             ))}
           </ul>
 
-          <div className="d-flex gap-2">
+          <div className="d-flex gap-2 flex-column flex-lg-row">
             <Link
               href="/contact"
-              className="btn btn-outline-light rounded-pill px-4 fw-semibold"
+              className="btn btn-outline-light rounded-pill px-4 fw-semibold d-flex align-items-center justify-content-center"
               onClick={() => setIsMobileMenuOpen(false)}
               style={{
-                borderColor: isScrolled ? '#0d6efd' : '#ffffff',
-                color: isScrolled ? '#0d6efd' : '#ffffff',
+                borderColor: isScrolled ? '#3b82f6' : '#ffffff',
+                color: isScrolled ? '#3b82f6' : '#ffffff',
                 borderWidth: '2px',
                 fontSize: '0.95rem'
               }}
             >
-              <i className="bi bi-telephone me-1"></i>
+              <PhoneIcon className="me-2" style={{ width: '18px', height: '18px' }} />
               Contact
             </Link>
             <Link
               href="/contact"
-              className="btn btn-primary rounded-pill px-4 fw-semibold"
+              className="btn btn-primary rounded-pill px-4 fw-semibold d-flex align-items-center justify-content-center"
               onClick={() => setIsMobileMenuOpen(false)}
               style={{
-                backgroundColor: isScrolled ? '#0d6efd' : 'rgba(13, 110, 253, 0.9)',
-                border: 'none',
-                fontSize: '0.95rem',
-                boxShadow: isScrolled ? '0 4px 6px rgba(0,0,0,0.1)' : '0 4px 12px rgba(13, 110, 253, 0.3)'
+                fontSize: '0.95rem'
               }}
             >
-              <i className="bi bi-calendar-check me-1"></i>
+              <CalendarDaysIcon className="me-2" style={{ width: '18px', height: '18px' }} />
               Book Free Counseling
             </Link>
           </div>
@@ -118,16 +126,32 @@ export default function Header() {
           font-size: 1.25rem !important;
         }
 
+        .nav-link {
+          position: relative;
+        }
+
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 0;
+          height: 2px;
+          background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+          transition: all 0.3s ease;
+          transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+          width: 80%;
+        }
+
         .nav-link:hover {
-          color: rgba(13, 110, 253, 0.8) !important;
+          color: #3b82f6 !important;
         }
 
         .navbar.scrolled .nav-link:hover {
-          color: #0d6efd !important;
-        }
-
-        .custom-light {
-          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+          color: #3b82f6 !important;
         }
 
         @media (max-width: 991.98px) {
@@ -149,13 +173,17 @@ export default function Header() {
           }
 
           .navbar-collapse.show .nav-link:hover {
-            background-color: rgba(13, 110, 253, 0.1);
-            color: #0d6efd !important;
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #3b82f6 !important;
           }
 
           .navbar-collapse.show .btn-outline-light {
-            border-color: #0d6efd !important;
-            color: #0d6efd !important;
+            border-color: #3b82f6 !important;
+            color: #3b82f6 !important;
+          }
+
+          .navbar-collapse.show .btn {
+            margin: 0.25rem 0;
           }
         }
       `}</style>

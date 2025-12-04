@@ -1,3 +1,18 @@
+'use client'
+
+import Link from 'next/link'
+import {
+  MagnifyingGlassIcon,
+  CalendarDaysIcon,
+  AcademicCapIcon,
+  ClockIcon,
+  ShieldCheckIcon,
+  PercentBadgeIcon,
+  CheckCircleIcon,
+  TrophyIcon,
+  UserGroupIcon
+} from '@heroicons/react/24/solid'
+
 export default function Hero() {
   return (
     <section className="hero-section">
@@ -6,17 +21,17 @@ export default function Hero() {
           <div className="col-lg-6 text-center text-lg-start">
             <div className="fade-in">
               {/* Trust badges at the top */}
-              <div className="d-flex align-items-center gap-3 mb-4 flex-wrap">
-                <span className="badge bg-success text-white px-3 py-2 rounded-pill">
-                  <i className="bi bi-check-circle me-1"></i>
+              <div className="d-flex align-items-center gap-3 mb-4 flex-wrap justify-content-center justify-content-lg-start">
+                <span className="badge bg-success text-white px-3 py-2 rounded-pill d-flex align-items-center">
+                  <CheckCircleIcon className="me-1" style={{ width: '18px', height: '18px' }} />
                   UGC Approved
                 </span>
-                <span className="badge bg-warning text-dark px-3 py-2 rounded-pill">
-                  <i className="bi bi-award me-1"></i>
+                <span className="badge bg-warning text-dark px-3 py-2 rounded-pill d-flex align-items-center">
+                  <TrophyIcon className="me-1" style={{ width: '18px', height: '18px' }} />
                   21+ Universities
                 </span>
-                <span className="badge bg-info text-white px-3 py-2 rounded-pill">
-                  <i className="bi bi-people me-1"></i>
+                <span className="badge bg-info text-white px-3 py-2 rounded-pill d-flex align-items-center">
+                  <UserGroupIcon className="me-1" style={{ width: '18px', height: '18px' }} />
                   5000+ Students
                 </span>
               </div>
@@ -33,62 +48,62 @@ export default function Hero() {
               </p>
 
               <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start mb-4">
-                <a href="/universities" className="btn btn-light btn-lg fw-bold rounded-pill px-4">
-                  <i className="bi bi-search me-2"></i>
+                <Link href="/universities" className="btn btn-light btn-lg fw-bold rounded-pill px-4 d-flex align-items-center justify-content-center">
+                  <MagnifyingGlassIcon className="me-2" style={{ width: '22px', height: '22px' }} />
                   Explore Programs
-                </a>
-                <a href="/contact" className="btn btn-outline-light btn-lg rounded-pill px-4">
-                  <i className="bi bi-calendar-check me-2"></i>
+                </Link>
+                <Link href="/contact" className="btn btn-outline-light btn-lg rounded-pill px-4 d-flex align-items-center justify-content-center">
+                  <CalendarDaysIcon className="me-2" style={{ width: '22px', height: '22px' }} />
                   Free Counseling
-                </a>
+                </Link>
               </div>
 
               {/* Key benefits with icons */}
               <div className="row g-3">
                 <div className="col-6 col-md-3">
                   <div className="d-flex flex-column align-items-center text-center">
-                    <div className="rounded-circle bg-white bg-opacity-20 p-3 mb-2">
-                      <i className="bi bi-mortarboard-fill text-white fs-4"></i>
+                    <div className="rounded-circle bg-white bg-opacity-20 p-3 mb-2 float">
+                      <AcademicCapIcon className="text-white" style={{ width: '32px', height: '32px' }} />
                     </div>
-                    <small className="text-white">Expert Guidance</small>
+                    <small className="text-white fw-semibold">Expert Guidance</small>
                   </div>
                 </div>
                 <div className="col-6 col-md-3">
                   <div className="d-flex flex-column align-items-center text-center">
-                    <div className="rounded-circle bg-white bg-opacity-20 p-3 mb-2">
-                      <i className="bi bi-clock-fill text-white fs-4"></i>
+                    <div className="rounded-circle bg-white bg-opacity-20 p-3 mb-2 float" style={{ animationDelay: '0.2s' }}>
+                      <ClockIcon className="text-white" style={{ width: '32px', height: '32px' }} />
                     </div>
-                    <small className="text-white">Flexible Learning</small>
+                    <small className="text-white fw-semibold">Flexible Learning</small>
                   </div>
                 </div>
                 <div className="col-6 col-md-3">
                   <div className="d-flex flex-column align-items-center text-center">
-                    <div className="rounded-circle bg-white bg-opacity-20 p-3 mb-2">
-                      <i className="bi bi-shield-check-fill text-white fs-4"></i>
+                    <div className="rounded-circle bg-white bg-opacity-20 p-3 mb-2 float" style={{ animationDelay: '0.4s' }}>
+                      <ShieldCheckIcon className="text-white" style={{ width: '32px', height: '32px' }} />
                     </div>
-                    <small className="text-white">Verified Universities</small>
+                    <small className="text-white fw-semibold">Verified Universities</small>
                   </div>
                 </div>
                 <div className="col-6 col-md-3">
                   <div className="d-flex flex-column align-items-center text-center">
-                    <div className="rounded-circle bg-white bg-opacity-20 p-3 mb-2">
-                      <i className="bi bi-percent text-white fs-4"></i>
+                    <div className="rounded-circle bg-white bg-opacity-20 p-3 mb-2 float" style={{ animationDelay: '0.6s' }}>
+                      <PercentBadgeIcon className="text-white" style={{ width: '32px', height: '32px' }} />
                     </div>
-                    <small className="text-white">No Hidden Fees</small>
+                    <small className="text-white fw-semibold">No Hidden Fees</small>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="col-lg-6 text-center">
+          <div className="col-lg-6 text-center mt-5 mt-lg-0">
             <div className="hero-image slide-in-right">
               <div className="position-relative">
-                <div className="bg-white bg-opacity-10 rounded-4 p-4 backdrop-blur-sm">
+                <div className="glass rounded-4 p-4">
                   <div className="text-white text-start">
                     <div className="d-flex align-items-center mb-4">
-                      <div className="rounded-circle bg-warning p-3 me-3">
-                        <i className="bi bi-mortarboard-fill text-dark fs-2"></i>
+                      <div className="rounded-circle bg-warning p-3 me-3 pulse-glow">
+                        <AcademicCapIcon className="text-dark" style={{ width: '36px', height: '36px' }} />
                       </div>
                       <div>
                         <h5 className="mb-0 fw-bold">Start Your Journey Today</h5>
@@ -98,27 +113,31 @@ export default function Hero() {
 
                     <div className="row g-3 mb-4">
                       <div className="col-4">
-                        <div className="text-center">
-                          <h3 className="mb-0 fw-bold">500+</h3>
+                        <div className="text-center scale-in">
+                          <h3 className="mb-0 fw-bold gradient-text" style={{ fontSize: '2rem' }}>500+</h3>
                           <small>Programs</small>
                         </div>
                       </div>
                       <div className="col-4">
-                        <div className="text-center">
-                          <h3 className="mb-0 fw-bold">21</h3>
+                        <div className="text-center scale-in" style={{ animationDelay: '0.1s' }}>
+                          <h3 className="mb-0 fw-bold gradient-text" style={{ fontSize: '2rem' }}>21</h3>
                           <small>Universities</small>
                         </div>
                       </div>
                       <div className="col-4">
-                        <div className="text-center">
-                          <h3 className="mb-0 fw-bold">50+</h3>
+                        <div className="text-center scale-in" style={{ animationDelay: '0.2s' }}>
+                          <h3 className="mb-0 fw-bold gradient-text" style={{ fontSize: '2rem' }}>50+</h3>
                           <small>Specializations</small>
                         </div>
                       </div>
                     </div>
 
-                    <div className="alert alert-success d-flex align-items-center mb-0">
-                      <i className="bi bi-check-circle-fill me-2"></i>
+                    <div className="alert alert-success d-flex align-items-center mb-0 slide-up" style={{
+                      background: 'rgba(16, 185, 129, 0.2)',
+                      border: '1px solid rgba(16, 185, 129, 0.3)',
+                      backdropFilter: 'blur(10px)'
+                    }}>
+                      <CheckCircleIcon className="me-2" style={{ width: '24px', height: '24px' }} />
                       <small className="fw-medium">100% Free Admission Support</small>
                     </div>
                   </div>
@@ -128,6 +147,15 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .gradient-text {
+          background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+      `}</style>
     </section>
   )
 }

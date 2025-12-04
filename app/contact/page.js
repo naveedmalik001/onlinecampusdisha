@@ -3,6 +3,14 @@
 import { useState } from 'react'
 import Header from '../../components/shared/Header'
 import Footer from '../../components/shared/Footer'
+import {
+  PhoneIcon,
+  EnvelopeIcon,
+  MapPinIcon,
+  ClockIcon,
+  PaperAirplaneIcon,
+  CheckCircleIcon
+} from '@heroicons/react/24/solid'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -96,22 +104,25 @@ export default function ContactPage() {
 
   const contactInfo = [
     {
-      icon: 'bi-telephone-fill',
+      Icon: PhoneIcon,
       title: 'Phone Support',
-      content: '+91 8XXXXXXXXX',
-      subtext: 'Mon-Sat: 9:00 AM - 6:00 PM'
+      content: '+91 9469328661',
+      subtext: 'Mon-Sat: 9:00 AM - 6:00 PM',
+      href: 'tel:+919469328661'
     },
     {
-      icon: 'bi-envelope-fill',
+      Icon: EnvelopeIcon,
       title: 'Email Support',
-      content: 'info@campusdisha.com',
-      subtext: 'We respond within 24 hours'
+      content: 'info@campusdisha.in',
+      subtext: 'We respond within 24 hours',
+      href: 'mailto:info@campusdisha.in'
     },
     {
-      icon: 'bi-geo-alt-fill',
+      Icon: MapPinIcon,
       title: 'Office Address',
-      content: 'Delhi, India',
-      subtext: 'By appointment only'
+      content: 'Residency Road Lal Chowk',
+      subtext: 'Srinagar J&K 190001',
+      href: null
     }
   ]
 
@@ -140,8 +151,26 @@ export default function ContactPage() {
 
       <main>
         {/* Page Header */}
-        <section className="bg-primary text-white py-5">
-          <div className="container">
+        <section
+          className="text-white py-5"
+          style={{
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            position: 'relative',
+            overflow: 'hidden'
+          }}
+        >
+          <div
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
+              opacity: 0.3
+            }}
+          />
+          <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <div className="row">
               <div className="col-lg-8">
                 <h1 className="display-4 fw-bold mb-3">Contact Us</h1>
@@ -164,7 +193,10 @@ export default function ContactPage() {
                 </p>
 
                 {submitStatus && (
-                  <div className={`alert ${submitStatus.type === 'success' ? 'alert-success' : 'alert-danger'} mb-4`} role="alert">
+                  <div className={`alert ${submitStatus.type === 'success' ? 'alert-success' : 'alert-danger'} mb-4 d-flex align-items-center`} role="alert">
+                    {submitStatus.type === 'success' && (
+                      <CheckCircleIcon className="me-2" style={{ width: '24px', height: '24px' }} />
+                    )}
                     {submitStatus.message}
                   </div>
                 )}
@@ -300,7 +332,7 @@ export default function ContactPage() {
                     <div className="col-12">
                       <button
                         type="submit"
-                        className="btn btn-primary btn-lg"
+                        className="btn btn-primary btn-lg d-flex align-items-center justify-content-center"
                         disabled={isSubmitting}
                       >
                         {isSubmitting ? (
@@ -310,7 +342,7 @@ export default function ContactPage() {
                           </>
                         ) : (
                           <>
-                            <i className="bi bi-send me-2"></i>
+                            <PaperAirplaneIcon className="me-2" style={{ width: '20px', height: '20px' }} />
                             Submit Request
                           </>
                         )}
@@ -326,12 +358,25 @@ export default function ContactPage() {
                     <h5 className="mb-4">Quick Contact</h5>
                     {contactInfo.map((info, index) => (
                       <div className="d-flex align-items-start mb-4" key={index}>
-                        <div className="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style={{width: '40px', height: '40px'}}>
-                          <i className={`bi ${info.icon}`}></i>
+                        <div
+                          className="rounded-circle d-flex align-items-center justify-content-center me-3"
+                          style={{
+                            width: '40px',
+                            height: '40px',
+                            background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)'
+                          }}
+                        >
+                          <info.Icon className="text-white" style={{ width: '20px', height: '20px' }} />
                         </div>
                         <div>
                           <h6 className="mb-1">{info.title}</h6>
-                          <p className="mb-1 fw-bold">{info.content}</p>
+                          {info.href ? (
+                            <a href={info.href} className="fw-bold text-decoration-none d-block mb-1">
+                              {info.content}
+                            </a>
+                          ) : (
+                            <p className="mb-1 fw-bold">{info.content}</p>
+                          )}
                           <small className="text-muted">{info.subtext}</small>
                         </div>
                       </div>
@@ -343,26 +388,18 @@ export default function ContactPage() {
                   <div className="card-body p-4">
                     <h5 className="mb-3">Why Choose Campus Disha?</h5>
                     <ul className="list-unstyled">
-                      <li className="d-flex align-items-start mb-3">
-                        <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-                        <span>100% Free Counseling</span>
-                      </li>
-                      <li className="d-flex align-items-start mb-3">
-                        <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-                        <span>Expert Guidance</span>
-                      </li>
-                      <li className="d-flex align-items-start mb-3">
-                        <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-                        <span>21+ Partner Universities</span>
-                      </li>
-                      <li className="d-flex align-items-start mb-3">
-                        <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-                        <span>End-to-End Support</span>
-                      </li>
-                      <li className="d-flex align-items-start">
-                        <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-                        <span>Trusted by 5000+ Students</span>
-                      </li>
+                      {[
+                        '100% Free Counseling',
+                        'Expert Guidance',
+                        '21+ Partner Universities',
+                        'End-to-End Support',
+                        'Trusted by 5000+ Students'
+                      ].map((item, index) => (
+                        <li className="d-flex align-items-start mb-3" key={index}>
+                          <CheckCircleIcon className="text-success me-2 mt-1" style={{ width: '20px', height: '20px', flexShrink: 0 }} />
+                          <span>{item}</span>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </div>
@@ -380,8 +417,8 @@ export default function ContactPage() {
                   <div className="card-body p-4">
                     <div className="row align-items-center">
                       <div className="col-lg-8">
-                        <h4 className="mb-3">
-                          <i className="bi bi-clock me-2"></i>
+                        <h4 className="mb-3 d-flex align-items-center">
+                          <ClockIcon className="me-2" style={{ width: '28px', height: '28px' }} />
                           Office Hours & Response Times
                         </h4>
                         <div className="row">
@@ -401,13 +438,16 @@ export default function ContactPage() {
                           </div>
                         </div>
                       </div>
-                      <div className="col-lg-4 text-center">
-                        <div className="bg-primary text-white rounded-3 p-3">
-                          <i className="bi bi-telephone-fill display-4 mb-2"></i>
+                      <div className="col-lg-4 text-center mt-4 mt-lg-0">
+                        <div
+                          className="text-white rounded-3 p-3"
+                          style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)' }}
+                        >
+                          <PhoneIcon className="mb-2" style={{ width: '48px', height: '48px' }} />
                           <h5>Emergency Support</h5>
                           <p className="mb-0">For urgent admission queries</p>
-                          <a href="tel:+918XXXXXXXXX" className="btn btn-light mt-2">
-                            <i className="bi bi-telephone me-2"></i>
+                          <a href="tel:+919469328661" className="btn btn-light mt-2">
+                            <PhoneIcon className="me-2" style={{ width: '18px', height: '18px' }} />
                             Call Now
                           </a>
                         </div>
