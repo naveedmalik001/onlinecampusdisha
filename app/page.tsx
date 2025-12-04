@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Header from '../components/shared/Header'
 import Footer from '../components/shared/Footer'
 import Hero from '../components/shared/Hero'
@@ -219,14 +220,14 @@ export default function HomePage() {
               Get free counseling and explore 500+ online degree programs
             </p>
             <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-              <a href="/contact" className="btn btn-light btn-lg">
+              <Link href="/contact" className="btn btn-light btn-lg">
                 <i className="bi bi-calendar-check me-2"></i>
                 Book Free Counseling
-              </a>
-              <a href="/universities" className="btn btn-outline-light btn-lg">
+              </Link>
+              <Link href="/universities" className="btn btn-outline-light btn-lg">
                 <i className="bi bi-search me-2"></i>
                 Explore Programs
-              </a>
+              </Link>
             </div>
           </div>
         </section>
