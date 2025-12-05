@@ -11,9 +11,9 @@ export default function UniversitiesPage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedState, setSelectedState] = useState('')
   const [selectedProgram, setSelectedProgram] = useState('')
-  const [currentPage, setCurrentPage] = useState(1)
   const [sortBy, setSortBy] = useState('name')
-  const universitiesPerPage = 12
+  const [showMore, setShowMore] = useState(false)
+  const universitiesPerPage = showMore ? 12 : 6
 
   // Extract unique states and programs
   const states = useMemo(() => {
@@ -58,16 +58,12 @@ export default function UniversitiesPage() {
     return filtered
   }, [searchTerm, selectedState, selectedProgram, sortBy])
 
-  // Pagination
-  const totalPages = Math.ceil(filteredUniversities.length / universitiesPerPage)
-  const currentUniversities = filteredUniversities.slice(
-    (currentPage - 1) * universitiesPerPage,
-    currentPage * universitiesPerPage
-  )
+  // Display universities
+  const currentUniversities = filteredUniversities.slice(0, universitiesPerPage)
 
-  // Reset to page 1 when filters change
+  // Reset showMore when filters change
   useEffect(() => {
-    setCurrentPage(1)
+    setShowMore(false)
   }, [searchTerm, selectedState, selectedProgram])
 
   const clearFilters = () => {
@@ -75,38 +71,34 @@ export default function UniversitiesPage() {
     setSelectedState('')
     setSelectedProgram('')
     setSortBy('name')
-    setCurrentPage(1)
+    setShowMore(false)
   }
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
 
-      {/* Hero Section - Matching Homepage Design */}
-      <section className="relative bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+      {/* Hero Section - Dark and Bold */}
+      <section className="relative bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-black opacity-30"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
               Find Your Perfect
-              <span className="text-yellow-400"> University</span>
+              <span className="text-yellow-400 block md:inline"> University</span>
             </h1>
             <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto mb-8">
-              Explore 21+ accredited universities offering 500+ online degree programs.
+              Explore {universities.length}+ accredited universities offering 500+ online degree programs.
               Start your journey towards a brighter future today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#universities" className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow-lg">
+              <a href="#universities" className="inline-flex items-center justify-center px-8 py-4 bg-yellow-500 text-blue-900 font-bold rounded-lg hover:bg-yellow-400 transform hover:scale-105 transition-all duration-300 shadow-2xl">
                 Explore Universities
                 <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </svg>
               </a>
-              <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transform hover:scale-105 transition-all duration-300">
+              <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-yellow-500 text-yellow-500 font-bold rounded-lg hover:bg-yellow-500 hover:text-blue-900 transform hover:scale-105 transition-all duration-300">
                 Get Free Counseling
               </Link>
             </div>
@@ -115,24 +107,24 @@ export default function UniversitiesPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-white">
+      <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div className="p-6">
-              <div className="text-4xl font-bold text-blue-600 mb-2">21+</div>
-              <div className="text-gray-600 font-medium">Universities</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl">
+              <div className="text-3xl md:text-4xl font-bold text-blue-700 mb-2">{universities.length}+</div>
+              <div className="text-gray-700 font-semibold">Universities</div>
             </div>
-            <div className="p-6">
-              <div className="text-4xl font-bold text-green-600 mb-2">500+</div>
-              <div className="text-gray-600 font-medium">Programs</div>
+            <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl">
+              <div className="text-3xl md:text-4xl font-bold text-green-700 mb-2">500+</div>
+              <div className="text-gray-700 font-semibold">Programs</div>
             </div>
-            <div className="p-6">
-              <div className="text-4xl font-bold text-purple-600 mb-2">100%</div>
-              <div className="text-gray-600 font-medium">UGC Approved</div>
+            <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl">
+              <div className="text-3xl md:text-4xl font-bold text-purple-700 mb-2">100%</div>
+              <div className="text-gray-700 font-semibold">UGC Approved</div>
             </div>
-            <div className="p-6">
-              <div className="text-4xl font-bold text-orange-600 mb-2">50K+</div>
-              <div className="text-gray-600 font-medium">Students</div>
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-xl">
+              <div className="text-3xl md:text-4xl font-bold text-orange-700 mb-2">50K+</div>
+              <div className="text-gray-700 font-semibold">Students</div>
             </div>
           </div>
         </div>
@@ -150,36 +142,38 @@ export default function UniversitiesPage() {
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-              {/* Search */}
-              <div className="lg:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Search Universities
-                </label>
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="Search by name or location..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                  <svg className="absolute left-4 top-3.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                </div>
+          {/* Improved Filters - Mobile First */}
+          <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+            {/* Search Bar */}
+            <div className="mb-6">
+              <label className="block text-sm font-bold text-gray-700 mb-2">
+                🔍 Search Universities
+              </label>
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search by name or location..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-12 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 font-medium"
+                />
+                <svg className="absolute left-4 top-3.5 h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
               </div>
+            </div>
 
+            {/* Filter Options - Responsive Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               {/* State Filter */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  State
+                <label className="block text-sm font-bold text-gray-700 mb-2">
+                  📍 State
                 </label>
                 <select
                   value={selectedState}
                   onChange={(e) => setSelectedState(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 font-medium"
                 >
                   <option value="">All States</option>
                   {states.map(state => (
@@ -190,13 +184,13 @@ export default function UniversitiesPage() {
 
               {/* Program Filter */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Program
+                <label className="block text-sm font-bold text-gray-700 mb-2">
+                  📚 Program
                 </label>
                 <select
                   value={selectedProgram}
                   onChange={(e) => setSelectedProgram(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 font-medium"
                 >
                   <option value="">All Programs</option>
                   {programs.map(program => (
@@ -204,35 +198,39 @@ export default function UniversitiesPage() {
                   ))}
                 </select>
               </div>
-            </div>
 
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-              <div className="flex items-center gap-4">
-                <label className="text-sm font-medium text-gray-700">Sort by:</label>
+              {/* Sort Options */}
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-2">
+                  🔄 Sort By
+                </label>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 font-medium"
                 >
                   <option value="name">Name</option>
                   <option value="location">Location</option>
                   <option value="established">Established</option>
                 </select>
               </div>
+            </div>
+
+            {/* Clear Filters Button */}
+            <div className="flex justify-center">
               <button
                 onClick={clearFilters}
-                className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
+                className="px-8 py-3 bg-red-500 text-white font-bold rounded-lg hover:bg-red-600 transform hover:scale-105 transition-all duration-300 shadow-lg"
               >
-                Clear Filters
+                🗑️ Clear All Filters
               </button>
             </div>
           </div>
 
           {/* Results Count */}
-          <div className="mb-8">
-            <p className="text-lg text-gray-700">
-              Showing <span className="font-semibold text-blue-600">{currentUniversities.length}</span> of{' '}
-              <span className="font-semibold text-blue-600">{filteredUniversities.length}</span> universities
+          <div className="mb-8 text-center">
+            <p className="text-lg text-gray-700 font-medium">
+              Found <span className="font-bold text-blue-600 text-2xl">{filteredUniversities.length}</span> universities
               {filteredUniversities.length !== universities.length && (
                 <span> (from {universities.length} total)</span>
               )}
@@ -248,66 +246,32 @@ export default function UniversitiesPage() {
 
           {/* No Results */}
           {filteredUniversities.length === 0 && (
-            <div className="text-center py-16">
-              <div className="text-6xl mb-4">🔍</div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">No universities found</h3>
+            <div className="text-center py-16 bg-white rounded-xl">
+              <div className="text-6xl mb-4">😔</div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">No universities found</h3>
               <p className="text-gray-600 mb-8">Try adjusting your filters or search terms</p>
               <button
                 onClick={clearFilters}
-                className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="px-8 py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 Clear All Filters
               </button>
             </div>
           )}
 
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <div className="flex justify-center">
-              <nav className="flex items-center gap-2">
-                <button
-                  onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                  disabled={currentPage === 1}
-                  className="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  Previous
-                </button>
-
-                {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-                  let pageNum
-                  if (totalPages <= 5) {
-                    pageNum = i + 1
-                  } else if (currentPage <= 3) {
-                    pageNum = i + 1
-                  } else if (currentPage >= totalPages - 2) {
-                    pageNum = totalPages - 4 + i
-                  } else {
-                    pageNum = currentPage - 2 + i
-                  }
-
-                  return (
-                    <button
-                      key={pageNum}
-                      onClick={() => setCurrentPage(pageNum)}
-                      className={`px-4 py-2 rounded-lg transition-colors ${
-                        currentPage === pageNum
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-white border border-gray-300 hover:bg-gray-50'
-                      }`}
-                    >
-                      {pageNum}
-                    </button>
-                  )
-                })}
-
-                <button
-                  onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                  disabled={currentPage === totalPages}
-                  className="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  Next
-                </button>
-              </nav>
+          {/* View More Button */}
+          {filteredUniversities.length > universitiesPerPage && (
+            <div className="text-center">
+              <button
+                onClick={() => setShowMore(!showMore)}
+                className="px-12 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-2xl text-lg"
+              >
+                {showMore ? (
+                  <>🔝 Show Less</>
+                ) : (
+                  <>👇 View {Math.min(6, filteredUniversities.length - universitiesPerPage)} More Universities</>
+                )}
+              </button>
             </div>
           )}
         </div>
@@ -358,10 +322,10 @@ export default function UniversitiesPage() {
                 description: 'Get end-to-end assistance from selection to admission completion'
               }
             ].map((benefit, index) => (
-              <div key={index} className="text-center p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-purple-50 hover:shadow-lg transform hover:scale-105 transition-all duration-300">
-                <div className="text-4xl mb-4">{benefit.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{benefit.title}</h3>
-                <p className="text-gray-600">{benefit.description}</p>
+              <div key={index} className="text-center p-8 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 text-white hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                <div className="text-5xl mb-4">{benefit.icon}</div>
+                <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
+                <p className="text-blue-100">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -380,7 +344,7 @@ export default function UniversitiesPage() {
             </p>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4">
             {[
               {
                 question: 'Are online degrees recognized by employers?',
@@ -399,8 +363,8 @@ export default function UniversitiesPage() {
                 answer: 'Online programs are generally more affordable than traditional programs, with fees ranging from ₹50,000 to ₹2,00,000 depending on the university and course.'
               }
             ].map((faq, index) => (
-              <details key={index} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <summary className="p-6 cursor-pointer font-semibold text-lg text-gray-900 hover:text-blue-600 transition-colors">
+              <details key={index} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <summary className="p-6 cursor-pointer font-bold text-lg text-gray-900 hover:text-blue-600 transition-colors">
                   {faq.question}
                 </summary>
                 <div className="px-6 pb-6 text-gray-600">
@@ -412,24 +376,21 @@ export default function UniversitiesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-600 to-purple-700 text-white">
+      {/* Simple CTA Section */}
+      <section className="py-16 bg-gradient-to-br from-blue-900 to-purple-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            Ready to Start Your Educational Journey?
+            Need Help Choosing the Right University?
           </h2>
-          <p className="text-xl mb-8 text-blue-100">
-            Our expert counselors will help you find the perfect program based on your career goals and preferences.
-          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow-lg">
+            <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-yellow-500 text-blue-900 font-bold rounded-lg hover:bg-yellow-400 transform hover:scale-105 transition-all duration-300 shadow-2xl">
               <svg className="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
               Schedule Free Counseling
             </Link>
-            <Link href="/trends" className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transform hover:scale-105 transition-all duration-300">
-              Explore Online Education Trends
+            <Link href="/trends" className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-yellow-500 text-yellow-500 font-bold rounded-lg hover:bg-yellow-500 hover:text-blue-900 transform hover:scale-105 transition-all duration-300">
+              📊 Explore Trends
             </Link>
           </div>
         </div>
