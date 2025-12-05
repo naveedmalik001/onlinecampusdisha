@@ -75,343 +75,718 @@ export default function UniversitiesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="universities-page">
       <Header />
 
-      {/* Hero Section - Dark and Bold */}
-      <section className="relative bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-30"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
-              Find Your Perfect
-              <span className="text-yellow-400 block md:inline"> University</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto mb-8">
-              Explore {universities.length}+ accredited universities offering 500+ online degree programs.
-              Start your journey towards a brighter future today.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#universities" className="inline-flex items-center justify-center px-8 py-4 bg-yellow-500 text-blue-900 font-bold rounded-lg hover:bg-yellow-400 transform hover:scale-105 transition-all duration-300 shadow-2xl">
-                Explore Universities
-                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                </svg>
-              </a>
-              <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-yellow-500 text-yellow-500 font-bold rounded-lg hover:bg-yellow-500 hover:text-blue-900 transform hover:scale-105 transition-all duration-300">
-                Get Free Counseling
-              </Link>
+      {/* Main Content with proper spacing */}
+      <div className="main-content">
+        {/* Hero Section */}
+        <section className="universities-hero">
+          <div className="container">
+            <div className="hero-content">
+              <h1 className="hero-title">
+                Find Your Perfect <span className="highlight">University</span>
+              </h1>
+              <p className="hero-subtitle">
+                Explore {universities.length}+ accredited universities offering 500+ online degree programs
+              </p>
+              <div className="hero-buttons">
+                <a href="#universities-section" className="btn btn-primary">
+                  Explore Universities
+                </a>
+                <Link href="/contact" className="btn btn-secondary">
+                  Get Free Counseling
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Stats Section */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl">
-              <div className="text-3xl md:text-4xl font-bold text-blue-700 mb-2">{universities.length}+</div>
-              <div className="text-gray-700 font-semibold">Universities</div>
-            </div>
-            <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl">
-              <div className="text-3xl md:text-4xl font-bold text-green-700 mb-2">500+</div>
-              <div className="text-gray-700 font-semibold">Programs</div>
-            </div>
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl">
-              <div className="text-3xl md:text-4xl font-bold text-purple-700 mb-2">100%</div>
-              <div className="text-gray-700 font-semibold">UGC Approved</div>
-            </div>
-            <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-xl">
-              <div className="text-3xl md:text-4xl font-bold text-orange-700 mb-2">50K+</div>
-              <div className="text-gray-700 font-semibold">Students</div>
+        {/* Stats Section */}
+        <section className="stats-section">
+          <div className="container">
+            <div className="stats-grid">
+              <div className="stat-item">
+                <div className="stat-number">{universities.length}+</div>
+                <div className="stat-label">Universities</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">500+</div>
+                <div className="stat-label">Programs</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">100%</div>
+                <div className="stat-label">UGC Approved</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">50K+</div>
+                <div className="stat-label">Students</div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Search and Filters Section */}
-      <section id="universities" className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Search & Filter Universities
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Find the perfect university that matches your requirements
-            </p>
-          </div>
+        {/* Universities Section */}
+        <section id="universities-section" className="universities-section">
+          <div className="container">
+            {/* Section Header */}
+            <div className="section-header">
+              <h2 className="section-title">Search & Filter Universities</h2>
+              <p className="section-subtitle">Find the perfect university that matches your requirements</p>
+            </div>
 
-          {/* Improved Filters - Mobile First */}
-          <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
-            {/* Search Bar */}
-            <div className="mb-6">
-              <label className="block text-sm font-bold text-gray-700 mb-2">
-                🔍 Search Universities
-              </label>
-              <div className="relative">
+            {/* Search and Filters */}
+            <div className="filters-container">
+              <div className="search-box">
                 <input
                   type="text"
                   placeholder="Search by name or location..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 font-medium"
+                  className="search-input"
                 />
-                <svg className="absolute left-4 top-3.5 h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-            </div>
-
-            {/* Filter Options - Responsive Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              {/* State Filter */}
-              <div>
-                <label className="block text-sm font-bold text-gray-700 mb-2">
-                  📍 State
-                </label>
-                <select
-                  value={selectedState}
-                  onChange={(e) => setSelectedState(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 font-medium"
-                >
-                  <option value="">All States</option>
-                  {states.map(state => (
-                    <option key={state} value={state}>{state}</option>
-                  ))}
-                </select>
               </div>
 
-              {/* Program Filter */}
-              <div>
-                <label className="block text-sm font-bold text-gray-700 mb-2">
-                  📚 Program
-                </label>
-                <select
-                  value={selectedProgram}
-                  onChange={(e) => setSelectedProgram(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 font-medium"
-                >
-                  <option value="">All Programs</option>
-                  {programs.map(program => (
-                    <option key={program} value={program}>{program}</option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Sort Options */}
-              <div>
-                <label className="block text-sm font-bold text-gray-700 mb-2">
-                  🔄 Sort By
-                </label>
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 font-medium"
-                >
-                  <option value="name">Name</option>
-                  <option value="location">Location</option>
-                  <option value="established">Established</option>
-                </select>
-              </div>
-            </div>
-
-            {/* Clear Filters Button */}
-            <div className="flex justify-center">
-              <button
-                onClick={clearFilters}
-                className="px-8 py-3 bg-red-500 text-white font-bold rounded-lg hover:bg-red-600 transform hover:scale-105 transition-all duration-300 shadow-lg"
-              >
-                🗑️ Clear All Filters
-              </button>
-            </div>
-          </div>
-
-          {/* Results Count */}
-          <div className="mb-8 text-center">
-            <p className="text-lg text-gray-700 font-medium">
-              Found <span className="font-bold text-blue-600 text-2xl">{filteredUniversities.length}</span> universities
-              {filteredUniversities.length !== universities.length && (
-                <span> (from {universities.length} total)</span>
-              )}
-            </p>
-          </div>
-
-          {/* Universities Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {currentUniversities.map((university) => (
-              <UniversityCardNew key={university.id} university={university} />
-            ))}
-          </div>
-
-          {/* No Results */}
-          {filteredUniversities.length === 0 && (
-            <div className="text-center py-16 bg-white rounded-xl">
-              <div className="text-6xl mb-4">😔</div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">No universities found</h3>
-              <p className="text-gray-600 mb-8">Try adjusting your filters or search terms</p>
-              <button
-                onClick={clearFilters}
-                className="px-8 py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg"
-              >
-                Clear All Filters
-              </button>
-            </div>
-          )}
-
-          {/* View More Button */}
-          {filteredUniversities.length > universitiesPerPage && (
-            <div className="text-center">
-              <button
-                onClick={() => setShowMore(!showMore)}
-                className="px-12 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-2xl text-lg"
-              >
-                {showMore ? (
-                  <>🔝 Show Less</>
-                ) : (
-                  <>👇 View {Math.min(6, filteredUniversities.length - universitiesPerPage)} More Universities</>
-                )}
-              </button>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Why Choose Online Education Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose Online Education?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover the advantages of online learning through Campus Disha
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: '✅',
-                title: 'UGC Approved',
-                description: 'All universities are UGC approved with equal recognition as regular degrees'
-              },
-              {
-                icon: '⏰',
-                title: 'Flexible Learning',
-                description: 'Study at your own pace while maintaining your work-life balance'
-              },
-              {
-                icon: '💼',
-                title: 'Career Support',
-                description: 'Get placement assistance and career counseling throughout your journey'
-              },
-              {
-                icon: '💰',
-                title: 'Affordable',
-                description: 'Save on accommodation and transportation with lower tuition fees'
-              },
-              {
-                icon: '🎯',
-                title: 'Industry Relevant',
-                description: 'Curriculum designed to meet current industry demands and trends'
-              },
-              {
-                icon: '🤝',
-                title: 'Free Support',
-                description: 'Get end-to-end assistance from selection to admission completion'
-              }
-            ].map((benefit, index) => (
-              <div key={index} className="text-center p-8 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 text-white hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                <div className="text-5xl mb-4">{benefit.icon}</div>
-                <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
-                <p className="text-blue-100">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQs Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-xl text-gray-600">
-              Common questions about online universities and programs
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {[
-              {
-                question: 'Are online degrees recognized by employers?',
-                answer: 'Yes, all degrees from UGC-approved online universities have the same recognition as regular degrees and are accepted by employers across India and abroad.'
-              },
-              {
-                question: 'What is the admission process for online programs?',
-                answer: 'The admission process typically includes application form submission, document verification, and sometimes an entrance test. We provide complete assistance throughout the process.'
-              },
-              {
-                question: 'Can I work while pursuing an online degree?',
-                answer: 'Absolutely! Online programs are designed for working professionals with flexible schedules, recorded lectures, and weekend classes.'
-              },
-              {
-                question: 'What is the fee structure for online programs?',
-                answer: 'Online programs are generally more affordable than traditional programs, with fees ranging from ₹50,000 to ₹2,00,000 depending on the university and course.'
-              }
-            ].map((faq, index) => (
-              <details key={index} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                <summary className="p-6 cursor-pointer font-bold text-lg text-gray-900 hover:text-blue-600 transition-colors">
-                  {faq.question}
-                </summary>
-                <div className="px-6 pb-6 text-gray-600">
-                  {faq.answer}
+              <div className="filters-row">
+                <div className="filter-group">
+                  <label className="filter-label">State</label>
+                  <select
+                    value={selectedState}
+                    onChange={(e) => setSelectedState(e.target.value)}
+                    className="filter-select"
+                  >
+                    <option value="">All States</option>
+                    {states.map(state => (
+                      <option key={state} value={state}>{state}</option>
+                    ))}
+                  </select>
                 </div>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Simple CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-blue-900 to-purple-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            Need Help Choosing the Right University?
-          </h2>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-yellow-500 text-blue-900 font-bold rounded-lg hover:bg-yellow-400 transform hover:scale-105 transition-all duration-300 shadow-2xl">
-              <svg className="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              Schedule Free Counseling
-            </Link>
-            <Link href="/trends" className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-yellow-500 text-yellow-500 font-bold rounded-lg hover:bg-yellow-500 hover:text-blue-900 transform hover:scale-105 transition-all duration-300">
-              📊 Explore Trends
-            </Link>
+                <div className="filter-group">
+                  <label className="filter-label">Program</label>
+                  <select
+                    value={selectedProgram}
+                    onChange={(e) => setSelectedProgram(e.target.value)}
+                    className="filter-select"
+                  >
+                    <option value="">All Programs</option>
+                    {programs.map(program => (
+                      <option key={program} value={program}>{program}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="filter-group">
+                  <label className="filter-label">Sort By</label>
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                    className="filter-select"
+                  >
+                    <option value="name">Name</option>
+                    <option value="location">Location</option>
+                    <option value="established">Established</option>
+                  </select>
+                </div>
+
+                <button
+                  onClick={clearFilters}
+                  className="btn-clear"
+                >
+                  Clear Filters
+                </button>
+              </div>
+
+              {/* Results Count */}
+              <div className="results-count">
+                <span className="count-number">{filteredUniversities.length}</span>
+                <span className="count-text">
+                  {filteredUniversities.length !== universities.length
+                    ? `universities found (from ${universities.length} total)`
+                    : 'universities available'
+                  }
+                </span>
+              </div>
+            </div>
+
+            {/* Universities Grid */}
+            {currentUniversities.length > 0 ? (
+              <>
+                <div className="universities-grid">
+                  {currentUniversities.map((university) => (
+                    <UniversityCardNew key={university.id} university={university} />
+                  ))}
+                </div>
+
+                {/* View More Button */}
+                {filteredUniversities.length > universitiesPerPage && (
+                  <div className="view-more-container">
+                    <button
+                      onClick={() => setShowMore(!showMore)}
+                      className="btn-view-more"
+                    >
+                      {showMore ? 'Show Less' : `View ${Math.min(6, filteredUniversities.length - universitiesPerPage)} More`}
+                    </button>
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="no-results">
+                <div className="no-results-icon">🔍</div>
+                <h3>No universities found</h3>
+                <p>Try adjusting your filters or search terms</p>
+                <button onClick={clearFilters} className="btn-clear-filters">
+                  Clear All Filters
+                </button>
+              </div>
+            )}
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Benefits Section */}
+        <section className="benefits-section">
+          <div className="container">
+            <div className="section-header">
+              <h2 className="section-title">Why Choose Online Education?</h2>
+              <p className="section-subtitle">Discover the advantages of online learning through Campus Disha</p>
+            </div>
+
+            <div className="benefits-grid">
+              {[
+                {
+                  title: 'UGC Approved',
+                  description: 'All universities are UGC approved with equal recognition as regular degrees',
+                  icon: '✅'
+                },
+                {
+                  title: 'Flexible Learning',
+                  description: 'Study at your own pace while maintaining your work-life balance',
+                  icon: '⏰'
+                },
+                {
+                  title: 'Career Support',
+                  description: 'Get placement assistance and career counseling throughout your journey',
+                  icon: '💼'
+                },
+                {
+                  title: 'Affordable',
+                  description: 'Save on accommodation and transportation with lower tuition fees',
+                  icon: '💰'
+                },
+                {
+                  title: 'Industry Relevant',
+                  description: 'Curriculum designed to meet current industry demands and trends',
+                  icon: '🎯'
+                },
+                {
+                  title: 'Free Support',
+                  description: 'Get end-to-end assistance from selection to admission completion',
+                  icon: '🤝'
+                }
+              ].map((benefit, index) => (
+                <div key={index} className="benefit-card">
+                  <div className="benefit-icon">{benefit.icon}</div>
+                  <h3 className="benefit-title">{benefit.title}</h3>
+                  <p className="benefit-description">{benefit.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="cta-section">
+          <div className="container">
+            <div className="cta-content">
+              <h2 className="cta-title">Need Help Choosing the Right University?</h2>
+              <p className="cta-subtitle">Our expert counselors are here to help you find the perfect program</p>
+              <div className="cta-buttons">
+                <Link href="/contact" className="btn btn-primary btn-large">
+                  Schedule Free Counseling
+                </Link>
+                <Link href="/trends" className="btn btn-outline btn-large">
+                  Explore Trends
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
 
       <Footer />
 
       <style jsx>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
+        /* Global Styles */
+        .universities-page {
+          min-height: 100vh;
+        }
+
+        .main-content {
+          padding-top: 120px; /* Account for fixed header */
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .universities-hero {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          padding: 80px 0;
+          text-align: center;
+          color: white;
+        }
+
+        .hero-content {
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .hero-title {
+          font-size: 3.5rem;
+          font-weight: 700;
+          margin-bottom: 20px;
+          line-height: 1.2;
+        }
+
+        .highlight {
+          color: #fbbf24;
+        }
+
+        .hero-subtitle {
+          font-size: 1.25rem;
+          margin-bottom: 40px;
+          opacity: 0.95;
+          line-height: 1.6;
+        }
+
+        .hero-buttons {
+          display: flex;
+          gap: 20px;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        /* Stats Section */
+        .stats-section {
+          background: white;
+          padding: 60px 0;
+        }
+
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 30px;
+          text-align: center;
+        }
+
+        .stat-item {
+          background: #f8fafc;
+          padding: 30px;
+          border-radius: 12px;
+          transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+          transform: translateY(-5px);
+        }
+
+        .stat-number {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: #667eea;
+          margin-bottom: 10px;
+        }
+
+        .stat-label {
+          font-size: 1rem;
+          color: #64748b;
+          font-weight: 600;
+        }
+
+        /* Universities Section */
+        .universities-section {
+          background: #f8fafc;
+          padding: 80px 0;
+        }
+
+        .section-header {
+          text-align: center;
+          margin-bottom: 50px;
+        }
+
+        .section-title {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: #1e293b;
+          margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+          font-size: 1.1rem;
+          color: #64748b;
+          max-width: 600px;
+          margin: 0 auto;
+        }
+
+        /* Filters */
+        .filters-container {
+          background: white;
+          padding: 40px;
+          border-radius: 16px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+          margin-bottom: 40px;
+        }
+
+        .search-box {
+          margin-bottom: 30px;
+        }
+
+        .search-input {
+          width: 100%;
+          padding: 15px 20px;
+          border: 2px solid #e2e8f0;
+          border-radius: 12px;
+          font-size: 1rem;
+          transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+          outline: none;
+          border-color: #667eea;
+        }
+
+        .filters-row {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 20px;
+          margin-bottom: 30px;
+          align-items: end;
+        }
+
+        .filter-group {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .filter-label {
+          font-size: 0.9rem;
+          font-weight: 600;
+          color: #374151;
+          margin-bottom: 8px;
+        }
+
+        .filter-select {
+          padding: 12px 15px;
+          border: 2px solid #e2e8f0;
+          border-radius: 8px;
+          font-size: 0.95rem;
+          transition: border-color 0.3s ease;
+        }
+
+        .filter-select:focus {
+          outline: none;
+          border-color: #667eea;
+        }
+
+        .btn-clear {
+          padding: 12px 24px;
+          background: #ef4444;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 0.3s ease;
+        }
+
+        .btn-clear:hover {
+          background: #dc2626;
+        }
+
+        .results-count {
+          text-align: center;
+          padding: 20px 0;
+          border-top: 1px solid #e2e8f0;
+        }
+
+        .count-number {
+          font-size: 2rem;
+          font-weight: 700;
+          color: #667eea;
+        }
+
+        .count-text {
+          font-size: 1.1rem;
+          color: #64748b;
+          margin-left: 10px;
+        }
+
+        /* Universities Grid */
+        .universities-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: 30px;
+          margin-bottom: 50px;
+        }
+
+        .view-more-container {
+          text-align: center;
+        }
+
+        .btn-view-more {
+          padding: 15px 40px;
+          background: #667eea;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 0.3s ease;
+        }
+
+        .btn-view-more:hover {
+          background: #5a67d8;
+        }
+
+        /* No Results */
+        .no-results {
+          text-align: center;
+          padding: 80px 20px;
+        }
+
+        .no-results-icon {
+          font-size: 4rem;
+          margin-bottom: 20px;
+        }
+
+        .no-results h3 {
+          font-size: 1.5rem;
+          color: #1e293b;
+          margin-bottom: 10px;
+        }
+
+        .no-results p {
+          color: #64748b;
+          margin-bottom: 30px;
+        }
+
+        .btn-clear-filters {
+          padding: 12px 30px;
+          background: #667eea;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 0.3s ease;
+        }
+
+        .btn-clear-filters:hover {
+          background: #5a67d8;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+          background: white;
+          padding: 80px 0;
+        }
+
+        .benefits-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 40px;
+        }
+
+        .benefit-card {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 40px 30px;
+          border-radius: 16px;
+          text-align: center;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .benefit-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .benefit-icon {
+          font-size: 3rem;
+          margin-bottom: 20px;
+        }
+
+        .benefit-title {
+          font-size: 1.3rem;
+          font-weight: 700;
+          margin-bottom: 15px;
+        }
+
+        .benefit-description {
+          font-size: 0.95rem;
+          line-height: 1.6;
+          opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          padding: 80px 0;
+          text-align: center;
+          color: white;
+        }
+
+        .cta-title {
+          font-size: 2.5rem;
+          font-weight: 700;
+          margin-bottom: 20px;
+        }
+
+        .cta-subtitle {
+          font-size: 1.2rem;
+          margin-bottom: 40px;
+          opacity: 0.95;
+        }
+
+        .cta-buttons {
+          display: flex;
+          gap: 20px;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        /* Button Styles */
+        .btn {
+          padding: 12px 24px;
+          border-radius: 8px;
+          font-weight: 600;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          border: none;
+        }
+
+        .btn-primary {
+          background: #fbbf24;
+          color: #1e293b;
+        }
+
+        .btn-primary:hover {
+          background: #f59e0b;
+          transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+          background: transparent;
+          color: white;
+          border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+          background: white;
+          color: #667eea;
+        }
+
+        .btn-outline {
+          background: transparent;
+          color: white;
+          border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+          background: white;
+          color: #667eea;
+        }
+
+        .btn-large {
+          padding: 15px 30px;
+          font-size: 1.1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .main-content {
+            padding-top: 100px;
           }
-          to {
-            opacity: 1;
-            transform: translateY(0);
+
+          .hero-title {
+            font-size: 2.5rem;
+          }
+
+          .hero-subtitle {
+            font-size: 1.1rem;
+          }
+
+          .hero-buttons {
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .section-title {
+            font-size: 2rem;
+          }
+
+          .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+          }
+
+          .stat-number {
+            font-size: 2rem;
+          }
+
+          .filters-row {
+            grid-template-columns: 1fr;
+            gap: 15px;
+          }
+
+          .universities-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+
+          .benefits-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+
+          .cta-title {
+            font-size: 2rem;
+          }
+
+          .cta-buttons {
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .filters-container {
+            padding: 25px;
           }
         }
 
-        .animate-fade-in {
-          animation: fade-in 1s ease-out;
+        @media (max-width: 480px) {
+          .container {
+            padding: 0 15px;
+          }
+
+          .hero-title {
+            font-size: 2rem;
+          }
+
+          .stat-number {
+            font-size: 1.5rem;
+          }
+
+          .benefit-card {
+            padding: 30px 20px;
+          }
         }
       `}</style>
     </div>
