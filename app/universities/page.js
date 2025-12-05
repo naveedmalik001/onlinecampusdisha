@@ -13,7 +13,7 @@ export default function UniversitiesPage() {
   const [selectedProgram, setSelectedProgram] = useState('')
   const [sortBy, setSortBy] = useState('name')
   const [showMore, setShowMore] = useState(false)
-  const universitiesPerPage = showMore ? 12 : 6
+  const universitiesPerPage = showMore ? universities.length : 6
 
   // Extract unique states and programs
   const states = useMemo(() => {
@@ -83,7 +83,7 @@ export default function UniversitiesPage() {
         {/* Hero Section */}
         <section className="universities-hero">
           <div className="container">
-            <div className="hero-content">
+            <div className="hero-content text-center">
               <h1 className="hero-title">
                 Find Your Perfect <span className="highlight">University</span>
               </h1>
@@ -130,26 +130,31 @@ export default function UniversitiesPage() {
         <section id="universities-section" className="universities-section">
           <div className="container">
             {/* Section Header */}
-            <div className="section-header">
+            <div className="section-header text-center">
               <h2 className="section-title">Search & Filter Universities</h2>
               <p className="section-subtitle">Find the perfect university that matches your requirements</p>
             </div>
 
             {/* Search and Filters */}
             <div className="filters-container">
-              <div className="search-box">
-                <input
-                  type="text"
-                  placeholder="Search by name or location..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="search-input"
-                />
+              {/* Search Bar */}
+              <div className="search-section">
+                <label className="filter-label">🔍 Search Universities</label>
+                <div className="search-wrapper">
+                  <input
+                    type="text"
+                    placeholder="Search by name or location..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="search-input"
+                  />
+                </div>
               </div>
 
-              <div className="filters-row">
+              {/* Filter Options */}
+              <div className="filters-grid">
                 <div className="filter-group">
-                  <label className="filter-label">State</label>
+                  <label className="filter-label">📍 State</label>
                   <select
                     value={selectedState}
                     onChange={(e) => setSelectedState(e.target.value)}
@@ -163,7 +168,7 @@ export default function UniversitiesPage() {
                 </div>
 
                 <div className="filter-group">
-                  <label className="filter-label">Program</label>
+                  <label className="filter-label">📚 Program</label>
                   <select
                     value={selectedProgram}
                     onChange={(e) => setSelectedProgram(e.target.value)}
@@ -177,7 +182,7 @@ export default function UniversitiesPage() {
                 </div>
 
                 <div className="filter-group">
-                  <label className="filter-label">Sort By</label>
+                  <label className="filter-label">🔄 Sort By</label>
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
@@ -189,23 +194,35 @@ export default function UniversitiesPage() {
                   </select>
                 </div>
 
-                <button
-                  onClick={clearFilters}
-                  className="btn-clear"
-                >
-                  Clear Filters
-                </button>
+                <div className="filter-actions">
+                  <button
+                    onClick={clearFilters}
+                    className="btn-clear"
+                  >
+                    🗑️ Clear All
+                  </button>
+                </div>
               </div>
 
               {/* Results Count */}
-              <div className="results-count">
-                <span className="count-number">{filteredUniversities.length}</span>
-                <span className="count-text">
-                  {filteredUniversities.length !== universities.length
-                    ? `universities found (from ${universities.length} total)`
-                    : 'universities available'
-                  }
-                </span>
+              <div className="results-info">
+                <div className="results-count">
+                  <span className="count-number">{filteredUniversities.length}</span>
+                  <span className="count-text">
+                    {filteredUniversities.length !== universities.length
+                      ? `universities found (from ${universities.length} total)`
+                      : 'universities available'
+                    }
+                  </span>
+                </div>
+                {filteredUniversities.length !== universities.length && (
+                  <button
+                    onClick={clearFilters}
+                    className="btn-reset-filter"
+                  >
+                    Reset Filters
+                  </button>
+                )}
               </div>
             </div>
 
@@ -220,21 +237,25 @@ export default function UniversitiesPage() {
 
                 {/* View More Button */}
                 {filteredUniversities.length > universitiesPerPage && (
-                  <div className="view-more-container">
+                  <div className="view-more-container text-center">
                     <button
                       onClick={() => setShowMore(!showMore)}
                       className="btn-view-more"
                     >
-                      {showMore ? 'Show Less' : `View ${Math.min(6, filteredUniversities.length - universitiesPerPage)} More`}
+                      {showMore ? (
+                        <>🔝 Show Less</>
+                      ) : (
+                        <>👇 View All {filteredUniversities.length - universitiesPerPage} More Universities</>
+                      )}
                     </button>
                   </div>
                 )}
               </>
             ) : (
-              <div className="no-results">
+              <div className="no-results text-center">
                 <div className="no-results-icon">🔍</div>
-                <h3>No universities found</h3>
-                <p>Try adjusting your filters or search terms</p>
+                <h3 className="no-results-title">No universities found</h3>
+                <p className="no-results-text">Try adjusting your filters or search terms</p>
                 <button onClick={clearFilters} className="btn-clear-filters">
                   Clear All Filters
                 </button>
@@ -246,7 +267,7 @@ export default function UniversitiesPage() {
         {/* Benefits Section */}
         <section className="benefits-section">
           <div className="container">
-            <div className="section-header">
+            <div className="section-header text-center">
               <h2 className="section-title">Why Choose Online Education?</h2>
               <p className="section-subtitle">Discover the advantages of online learning through Campus Disha</p>
             </div>
@@ -297,7 +318,7 @@ export default function UniversitiesPage() {
         {/* CTA Section */}
         <section className="cta-section">
           <div className="container">
-            <div className="cta-content">
+            <div className="cta-content text-center">
               <h2 className="cta-title">Need Help Choosing the Right University?</h2>
               <p className="cta-subtitle">Our expert counselors are here to help you find the perfect program</p>
               <div className="cta-buttons">
@@ -331,11 +352,14 @@ export default function UniversitiesPage() {
           padding: 0 20px;
         }
 
+        .text-center {
+          text-align: center !important;
+        }
+
         /* Hero Section */
         .universities-hero {
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           padding: 80px 0;
-          text-align: center;
           color: white;
         }
 
@@ -349,6 +373,7 @@ export default function UniversitiesPage() {
           font-weight: 700;
           margin-bottom: 20px;
           line-height: 1.2;
+          text-align: center;
         }
 
         .highlight {
@@ -360,6 +385,7 @@ export default function UniversitiesPage() {
           margin-bottom: 40px;
           opacity: 0.95;
           line-height: 1.6;
+          text-align: center;
         }
 
         .hero-buttons {
@@ -398,6 +424,7 @@ export default function UniversitiesPage() {
           font-weight: 700;
           color: #667eea;
           margin-bottom: 10px;
+          display: block;
         }
 
         .stat-label {
@@ -413,7 +440,6 @@ export default function UniversitiesPage() {
         }
 
         .section-header {
-          text-align: center;
           margin-bottom: 50px;
         }
 
@@ -431,7 +457,7 @@ export default function UniversitiesPage() {
           margin: 0 auto;
         }
 
-        /* Filters */
+        /* Filters - Enhanced Design */
         .filters-container {
           background: white;
           padding: 40px;
@@ -440,8 +466,20 @@ export default function UniversitiesPage() {
           margin-bottom: 40px;
         }
 
-        .search-box {
+        .search-section {
           margin-bottom: 30px;
+        }
+
+        .filter-label {
+          font-size: 0.9rem;
+          font-weight: 600;
+          color: #374151;
+          margin-bottom: 8px;
+          display: block;
+        }
+
+        .search-wrapper {
+          position: relative;
         }
 
         .search-input {
@@ -450,19 +488,20 @@ export default function UniversitiesPage() {
           border: 2px solid #e2e8f0;
           border-radius: 12px;
           font-size: 1rem;
-          transition: border-color 0.3s ease;
+          transition: all 0.3s ease;
         }
 
         .search-input:focus {
           outline: none;
           border-color: #667eea;
+          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
-        .filters-row {
+        .filters-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
           gap: 20px;
-          margin-bottom: 30px;
+          margin-bottom: 20px;
           align-items: end;
         }
 
@@ -471,24 +510,24 @@ export default function UniversitiesPage() {
           flex-direction: column;
         }
 
-        .filter-label {
-          font-size: 0.9rem;
-          font-weight: 600;
-          color: #374151;
-          margin-bottom: 8px;
-        }
-
         .filter-select {
           padding: 12px 15px;
           border: 2px solid #e2e8f0;
           border-radius: 8px;
           font-size: 0.95rem;
-          transition: border-color 0.3s ease;
+          transition: all 0.3s ease;
+          background: white;
         }
 
         .filter-select:focus {
           outline: none;
           border-color: #667eea;
+          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .filter-actions {
+          display: flex;
+          align-items: flex-end;
         }
 
         .btn-clear {
@@ -499,17 +538,28 @@ export default function UniversitiesPage() {
           border-radius: 8px;
           font-weight: 600;
           cursor: pointer;
-          transition: background 0.3s ease;
+          transition: all 0.3s ease;
+          font-size: 0.9rem;
         }
 
         .btn-clear:hover {
           background: #dc2626;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+
+        .results-info {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px 0;
+          border-top: 1px solid #e2e8f0;
         }
 
         .results-count {
-          text-align: center;
-          padding: 20px 0;
-          border-top: 1px solid #e2e8f0;
+          display: flex;
+          align-items: baseline;
+          gap: 8px;
         }
 
         .count-number {
@@ -521,7 +571,24 @@ export default function UniversitiesPage() {
         .count-text {
           font-size: 1.1rem;
           color: #64748b;
-          margin-left: 10px;
+        }
+
+        .btn-reset-filter {
+          padding: 8px 16px;
+          background: #f3f4f6;
+          color: #6b7280;
+          border: 1px solid #d1d5db;
+          border-radius: 6px;
+          font-size: 0.85rem;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .btn-reset-filter:hover {
+          background: #667eea;
+          color: white;
+          border-color: #667eea;
         }
 
         /* Universities Grid */
@@ -533,29 +600,33 @@ export default function UniversitiesPage() {
         }
 
         .view-more-container {
-          text-align: center;
+          margin-top: 40px;
         }
 
         .btn-view-more {
           padding: 15px 40px;
-          background: #667eea;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           color: white;
           border: none;
-          border-radius: 8px;
+          border-radius: 12px;
           font-size: 1rem;
           font-weight: 600;
           cursor: pointer;
-          transition: background 0.3s ease;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
         .btn-view-more:hover {
-          background: #5a67d8;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
         }
 
         /* No Results */
         .no-results {
-          text-align: center;
           padding: 80px 20px;
+          background: white;
+          border-radius: 16px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
         .no-results-icon {
@@ -563,15 +634,17 @@ export default function UniversitiesPage() {
           margin-bottom: 20px;
         }
 
-        .no-results h3 {
+        .no-results-title {
           font-size: 1.5rem;
           color: #1e293b;
           margin-bottom: 10px;
+          font-weight: 600;
         }
 
-        .no-results p {
+        .no-results-text {
           color: #64748b;
           margin-bottom: 30px;
+          font-size: 1rem;
         }
 
         .btn-clear-filters {
@@ -582,11 +655,12 @@ export default function UniversitiesPage() {
           border-radius: 8px;
           font-weight: 600;
           cursor: pointer;
-          transition: background 0.3s ease;
+          transition: all 0.3s ease;
         }
 
         .btn-clear-filters:hover {
           background: #5a67d8;
+          transform: translateY(-1px);
         }
 
         /* Benefits Section */
@@ -607,7 +681,7 @@ export default function UniversitiesPage() {
           padding: 40px 30px;
           border-radius: 16px;
           text-align: center;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          transition: all 0.3s ease;
         }
 
         .benefit-card:hover {
@@ -636,7 +710,6 @@ export default function UniversitiesPage() {
         .cta-section {
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           padding: 80px 0;
-          text-align: center;
           color: white;
         }
 
@@ -671,6 +744,7 @@ export default function UniversitiesPage() {
           transition: all 0.3s ease;
           cursor: pointer;
           border: none;
+          font-size: 0.95rem;
         }
 
         .btn-primary {
@@ -681,6 +755,7 @@ export default function UniversitiesPage() {
         .btn-primary:hover {
           background: #f59e0b;
           transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
         }
 
         .btn-secondary {
@@ -742,9 +817,15 @@ export default function UniversitiesPage() {
             font-size: 2rem;
           }
 
-          .filters-row {
+          .filters-grid {
             grid-template-columns: 1fr;
             gap: 15px;
+          }
+
+          .results-info {
+            flex-direction: column;
+            gap: 15px;
+            text-align: center;
           }
 
           .universities-grid {
