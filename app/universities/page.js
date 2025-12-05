@@ -68,7 +68,7 @@ export default function UniversitiesPage() {
     <div>
       <Header />
 
-      <main>
+      <main style={{ paddingTop: '100px' }}>
         {/* Page Header */}
         <section className="page-hero">
           <div className="container">
@@ -195,12 +195,11 @@ export default function UniversitiesPage() {
         <section className="universities-grid-section">
           <div className="container">
             {filteredUniversities.length > 0 ? (
-              <div className="universities-grid">
+              <div className="row g-4">
                 {filteredUniversities.map((university) => (
-                  <UniversityCard
-                    key={university.id}
-                    university={university}
-                  />
+                  <div className="col-lg-4 col-md-6 col-12" key={university.id}>
+                    <UniversityCard university={university} />
+                  </div>
                 ))}
               </div>
             ) : (
@@ -327,10 +326,10 @@ export default function UniversitiesPage() {
         .page-hero {
           background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
           color: white;
-          padding: 80px 0 60px;
-          margin-top: 100px;
+          padding: 60px 0;
           position: relative;
           overflow: hidden;
+          border-radius: 0 0 30px 30px;
         }
 
         .page-hero::before {
@@ -345,7 +344,7 @@ export default function UniversitiesPage() {
         }
 
         .hero-title {
-          font-size: 3rem;
+          font-size: 2.5rem;
           font-weight: 800;
           margin-bottom: 1rem;
           position: relative;
@@ -353,7 +352,7 @@ export default function UniversitiesPage() {
         }
 
         .hero-subtitle {
-          font-size: 1.25rem;
+          font-size: 1.15rem;
           opacity: 0.95;
           position: relative;
           z-index: 1;
@@ -364,13 +363,16 @@ export default function UniversitiesPage() {
         .filters-section {
           padding: 40px 0;
           background: #f8fafc;
+          margin-top: -30px;
+          position: relative;
+          z-index: 2;
         }
 
         .filter-card {
           background: white;
           padding: 30px;
           border-radius: 20px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
           border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
@@ -424,24 +426,6 @@ export default function UniversitiesPage() {
           background: #f8fafc;
         }
 
-        .universities-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 30px;
-          animation: fadeIn 0.6s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
         /* No Results */
         .no-results {
           text-align: center;
@@ -470,21 +454,13 @@ export default function UniversitiesPage() {
         }
 
         /* Responsive Design */
-        @media (max-width: 1200px) {
-          .universities-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-          }
-        }
-
         @media (max-width: 768px) {
           .page-hero {
-            padding: 60px 0 40px;
-            margin-top: 80px;
+            padding: 40px 0;
           }
 
           .hero-title {
-            font-size: 2rem;
+            font-size: 1.8rem;
           }
 
           .hero-subtitle {
@@ -493,11 +469,6 @@ export default function UniversitiesPage() {
 
           .filter-card {
             padding: 20px;
-          }
-
-          .universities-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
           }
 
           .results-count {
@@ -511,12 +482,6 @@ export default function UniversitiesPage() {
           .stats-badge {
             font-size: 0.8rem;
             padding: 6px 12px;
-          }
-        }
-
-        @media (min-width: 992px) {
-          .page-hero {
-            margin-top: 120px;
           }
         }
       `}</style>
