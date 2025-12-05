@@ -10,136 +10,158 @@ import {
   PercentBadgeIcon,
   CheckCircleIcon,
   TrophyIcon,
-  UserGroupIcon
+  UserGroupIcon,
+  SparklesIcon
 } from '@heroicons/react/24/solid'
 
 export default function Hero() {
   return (
-    <section className="hero-section">
-      <div className="container">
-        <div className="row align-items-center min-vh-100">
-          <div className="col-lg-6 text-center text-lg-start">
-            <div className="fade-in">
-              {/* Trust badges at the top */}
-              <div className="d-flex align-items-center gap-3 mb-4 flex-wrap justify-content-center justify-content-lg-start">
-                <span className="badge bg-success text-white px-3 py-2 rounded-pill d-flex align-items-center">
-                  <CheckCircleIcon className="me-1" style={{ width: '18px', height: '18px' }} />
-                  UGC Approved
-                </span>
-                <span className="badge bg-warning text-dark px-3 py-2 rounded-pill d-flex align-items-center">
-                  <TrophyIcon className="me-1" style={{ width: '18px', height: '18px' }} />
-                  21+ Universities
-                </span>
-                <span className="badge bg-info text-white px-3 py-2 rounded-pill d-flex align-items-center">
-                  <UserGroupIcon className="me-1" style={{ width: '18px', height: '18px' }} />
-                  5000+ Students
-                </span>
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }} />
+      </div>
+
+      {/* Floating Elements */}
+      <div className="absolute top-20 left-10 w-20 h-20 bg-yellow-400 rounded-full opacity-20 blur-xl animate-pulse" />
+      <div className="absolute bottom-20 right-10 w-32 h-32 bg-pink-400 rounded-full opacity-20 blur-xl animate-pulse" style={{ animationDelay: '1s' }} />
+      <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-cyan-400 rounded-full opacity-20 blur-xl animate-pulse" style={{ animationDelay: '2s' }} />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="text-center lg:text-left space-y-8 animate-fade-in">
+            {/* Trust Badges */}
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3">
+              <div className="inline-flex items-center px-4 py-2 bg-green-500/20 backdrop-blur-sm border border-green-400/30 rounded-full">
+                <CheckCircleIcon className="w-5 h-5 mr-2 text-green-400" />
+                <span className="text-green-100 font-semibold">UGC Approved</span>
               </div>
+              <div className="inline-flex items-center px-4 py-2 bg-yellow-500/20 backdrop-blur-sm border border-yellow-400/30 rounded-full">
+                <TrophyIcon className="w-5 h-5 mr-2 text-yellow-400" />
+                <span className="text-yellow-100 font-semibold">21+ Universities</span>
+              </div>
+              <div className="inline-flex items-center px-4 py-2 bg-cyan-500/20 backdrop-blur-sm border border-cyan-400/30 rounded-full">
+                <UserGroupIcon className="w-5 h-5 mr-2 text-cyan-400" />
+                <span className="text-cyan-100 font-semibold">5000+ Students</span>
+              </div>
+            </div>
 
-              <h1 className="hero-title mb-4 display-4 fw-bold">
+            {/* Main Heading */}
+            <div className="space-y-4">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
                 Find Your Perfect
-                <br />
-                <span className="text-warning">Online Degree</span>
+                <span className="block text-yellow-400">Online Degree</span>
               </h1>
-
-              <p className="hero-subtitle mb-4 lead">
+              <p className="text-lg sm:text-xl text-white/90 leading-relaxed max-w-2xl">
                 Your trusted gateway to accredited online programs from India's top universities.
                 Free counseling, simple applications, and guaranteed admission support.
               </p>
+            </div>
 
-              <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start mb-4">
-                <Link href="/universities" className="btn btn-light btn-lg fw-bold rounded-pill px-4 d-flex align-items-center justify-content-center">
-                  <MagnifyingGlassIcon className="me-2" style={{ width: '22px', height: '22px' }} />
-                  Explore Programs
-                </Link>
-                <Link href="/contact" className="btn btn-outline-light btn-lg rounded-pill px-4 d-flex align-items-center justify-content-center">
-                  <CalendarDaysIcon className="me-2" style={{ width: '22px', height: '22px' }} />
-                  Free Counseling
-                </Link>
-              </div>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Link
+                href="/universities"
+                className="group relative px-8 py-4 bg-white text-gray-900 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center justify-center"
+              >
+                <MagnifyingGlassIcon className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
+                Explore Programs
+                <SparklesIcon className="w-4 h-4 ml-2 opacity-70" />
+              </Link>
+              <Link
+                href="/contact"
+                className="group px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-gray-900 transition-all duration-300 hover:scale-105 flex items-center justify-center"
+              >
+                <CalendarDaysIcon className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
+                Free Counseling
+              </Link>
+            </div>
 
-              {/* Key benefits with icons */}
-              <div className="row g-3">
-                <div className="col-6 col-md-3">
-                  <div className="d-flex flex-column align-items-center text-center">
-                    <div className="rounded-circle bg-white bg-opacity-20 p-3 mb-2 float">
-                      <AcademicCapIcon className="text-white" style={{ width: '32px', height: '32px' }} />
-                    </div>
-                    <small className="text-white fw-semibold">Expert Guidance</small>
+            {/* Key Benefits */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8">
+              {[
+                {
+                  icon: AcademicCapIcon,
+                  title: 'Expert Guidance',
+                  animationDelay: '0s'
+                },
+                {
+                  icon: ClockIcon,
+                  title: 'Flexible Learning',
+                  animationDelay: '0.2s'
+                },
+                {
+                  icon: ShieldCheckIcon,
+                  title: 'Verified Universities',
+                  animationDelay: '0.4s'
+                },
+                {
+                  icon: PercentBadgeIcon,
+                  title: 'No Hidden Fees',
+                  animationDelay: '0.6s'
+                }
+              ].map((benefit, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col items-center text-center space-y-3 animate-float"
+                  style={{ animationDelay: benefit.animationDelay }}
+                >
+                  <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors duration-300">
+                    <benefit.icon className="w-8 h-8 text-white" />
                   </div>
+                  <span className="text-white font-semibold text-sm">{benefit.title}</span>
                 </div>
-                <div className="col-6 col-md-3">
-                  <div className="d-flex flex-column align-items-center text-center">
-                    <div className="rounded-circle bg-white bg-opacity-20 p-3 mb-2 float" style={{ animationDelay: '0.2s' }}>
-                      <ClockIcon className="text-white" style={{ width: '32px', height: '32px' }} />
-                    </div>
-                    <small className="text-white fw-semibold">Flexible Learning</small>
-                  </div>
-                </div>
-                <div className="col-6 col-md-3">
-                  <div className="d-flex flex-column align-items-center text-center">
-                    <div className="rounded-circle bg-white bg-opacity-20 p-3 mb-2 float" style={{ animationDelay: '0.4s' }}>
-                      <ShieldCheckIcon className="text-white" style={{ width: '32px', height: '32px' }} />
-                    </div>
-                    <small className="text-white fw-semibold">Verified Universities</small>
-                  </div>
-                </div>
-                <div className="col-6 col-md-3">
-                  <div className="d-flex flex-column align-items-center text-center">
-                    <div className="rounded-circle bg-white bg-opacity-20 p-3 mb-2 float" style={{ animationDelay: '0.6s' }}>
-                      <PercentBadgeIcon className="text-white" style={{ width: '32px', height: '32px' }} />
-                    </div>
-                    <small className="text-white fw-semibold">No Hidden Fees</small>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
-          <div className="col-lg-6 text-center mt-5 mt-lg-0">
-            <div className="hero-image slide-in-right">
-              <div className="position-relative">
-                <div className="glass rounded-4 p-4">
-                  <div className="text-white text-start">
-                    <div className="d-flex align-items-center mb-4">
-                      <div className="rounded-circle bg-warning p-3 me-3 pulse-glow">
-                        <AcademicCapIcon className="text-dark" style={{ width: '36px', height: '36px' }} />
-                      </div>
-                      <div>
-                        <h5 className="mb-0 fw-bold">Start Your Journey Today</h5>
-                        <p className="mb-0 opacity-75">Join thousands of successful graduates</p>
-                      </div>
-                    </div>
+          {/* Right Content - Hero Card */}
+          <div className="relative animate-slide-in-right">
+            <div className="relative">
+              {/* Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-pink-400 rounded-3xl blur-xl opacity-30 animate-pulse" />
 
-                    <div className="row g-3 mb-4">
-                      <div className="col-4">
-                        <div className="text-center scale-in">
-                          <h3 className="mb-0 fw-bold gradient-text" style={{ fontSize: '2rem' }}>500+</h3>
-                          <small>Programs</small>
-                        </div>
-                      </div>
-                      <div className="col-4">
-                        <div className="text-center scale-in" style={{ animationDelay: '0.1s' }}>
-                          <h3 className="mb-0 fw-bold gradient-text" style={{ fontSize: '2rem' }}>21</h3>
-                          <small>Universities</small>
-                        </div>
-                      </div>
-                      <div className="col-4">
-                        <div className="text-center scale-in" style={{ animationDelay: '0.2s' }}>
-                          <h3 className="mb-0 fw-bold gradient-text" style={{ fontSize: '2rem' }}>50+</h3>
-                          <small>Specializations</small>
-                        </div>
-                      </div>
+              {/* Main Card */}
+              <div className="relative bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
+                <div className="space-y-6">
+                  {/* Header */}
+                  <div className="flex items-center space-x-4">
+                    <div className="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center animate-pulse-glow">
+                      <AcademicCapIcon className="w-8 h-8 text-white" />
                     </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-white">Start Your Journey Today</h3>
+                      <p className="text-white/80">Join thousands of successful graduates</p>
+                    </div>
+                  </div>
 
-                    <div className="alert alert-success d-flex align-items-center mb-0 slide-up" style={{
-                      background: 'rgba(16, 185, 129, 0.2)',
-                      border: '1px solid rgba(16, 185, 129, 0.3)',
-                      backdropFilter: 'blur(10px)'
-                    }}>
-                      <CheckCircleIcon className="me-2" style={{ width: '24px', height: '24px' }} />
-                      <small className="fw-medium">100% Free Admission Support</small>
-                    </div>
+                  {/* Stats Grid */}
+                  <div className="grid grid-cols-3 gap-6">
+                    {[
+                      { number: '500+', label: 'Programs', delay: '0s' },
+                      { number: '21', label: 'Universities', delay: '0.1s' },
+                      { number: '50+', label: 'Specializations', delay: '0.2s' }
+                    ].map((stat, index) => (
+                      <div
+                        key={index}
+                        className="text-center animate-scale-in"
+                        style={{ animationDelay: stat.delay }}
+                      >
+                        <div className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
+                          {stat.number}
+                        </div>
+                        <div className="text-white/80 text-sm mt-1">{stat.label}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Success Alert */}
+                  <div className="bg-green-500/20 backdrop-blur-sm border border-green-400/30 rounded-xl p-4 flex items-center space-x-3 animate-slide-up">
+                    <CheckCircleIcon className="w-6 h-6 text-green-400 flex-shrink-0" />
+                    <span className="text-green-100 font-medium">100% Free Admission Support</span>
                   </div>
                 </div>
               </div>
@@ -148,12 +170,24 @@ export default function Hero() {
         </div>
       </div>
 
+      {/* Custom Styles */}
       <style jsx>{`
-        .gradient-text {
-          background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse-glow {
+          0%, 100% { box-shadow: 0 0 20px rgba(251, 191, 36, 0.5); }
+          50% { box-shadow: 0 0 40px rgba(251, 191, 36, 0.8); }
+        }
+
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-pulse-glow {
+          animation: pulse-glow 2s ease-in-out infinite;
         }
       `}</style>
     </section>

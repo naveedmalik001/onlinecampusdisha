@@ -18,7 +18,8 @@
       "Bash(yarn install:*)",
       "Bash(\"/mnt/c/Program Files/nodejs/npm.cmd\" install:*)",
       "Bash(node:*)",
-      "Bash(\"/c/Program Files/nodejs/npm.cmd\" --version)"
+      "Bash(\"/c/Program Files/nodejs/npm.cmd\" --version)",
+      "Bash(dir:*)"
     ]
   },
   "enableAllProjectMcpServers": true,

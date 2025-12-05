@@ -37,156 +37,122 @@ export default function Header() {
   ]
 
   return (
-    <nav className={`navbar navbar-expand-lg navbar-light fixed-top ${isScrolled ? 'sticky scrolled' : ''}`}>
-      <div className="container">
-        <Link className="navbar-brand fw-bold fs-4 d-flex align-items-center" href="/" style={{ color: isScrolled ? '#3b82f6' : '#ffffff' }}>
-          <AcademicCapIcon className="me-2" style={{ width: '32px', height: '32px' }} />
-          Campus Disha
-        </Link>
+    <>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-white/95 backdrop-blur-lg shadow-lg py-2'
+          : 'bg-white/10 backdrop-blur-md border-b border-white/20 py-4'
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <Link
+              className="flex items-center font-bold text-xl transition-transform duration-300 hover:scale-105"
+              href="/"
+            >
+              <AcademicCapIcon className={`w-8 h-8 mr-2 transition-colors duration-300 ${
+                isScrolled ? 'text-blue-600' : 'text-white'
+              }`} />
+              <span className={`transition-colors duration-300 ${
+                isScrolled ? 'text-gray-900' : 'text-white'
+              }`}>
+                Campus Disha
+              </span>
+            </Link>
 
-        <button
-          className="navbar-toggler border-0"
-          type="button"
-          aria-controls="navbarNav"
-          aria-expanded={isMobileMenuOpen ? "true" : "false"}
-          aria-label="Toggle navigation"
-          onClick={toggleMobileMenu}
-          style={{ boxShadow: 'none', padding: '0.5rem' }}
-        >
-          {isMobileMenuOpen ? (
-            <XMarkIcon style={{ width: '28px', height: '28px', color: isScrolled ? '#333' : '#fff' }} />
-          ) : (
-            <Bars3Icon style={{ width: '28px', height: '28px', color: isScrolled ? '#333' : '#fff' }} />
-          )}
-        </button>
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center">
+              <div className="flex items-center space-x-8">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    className="relative font-medium text-gray-700 hover:text-blue-600 transition-colors duration-300 group"
+                    href={item.href}
+                  >
+                    {item.name}
+                    <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 group-hover:w-full transform -translate-x-1/2" />
+                  </Link>
+                ))}
+              </div>
+            </div>
 
-        <div className={`collapse navbar-collapse ${isMobileMenuOpen ? 'show' : ''}`} id="navbarNav">
-          <ul className="navbar-nav mx-auto">
-            {navItems.map((item) => (
-              <li className="nav-item" key={item.name}>
+            {/* Desktop CTA Buttons */}
+            <div className="hidden lg:flex items-center space-x-4">
+              <Link
+                href="/contact"
+                className="flex items-center px-6 py-2.5 border-2 border-blue-600 text-blue-600 font-semibold rounded-full hover:bg-blue-50 transition-all duration-300 hover:shadow-lg"
+              >
+                <PhoneIcon className="w-4 h-4 mr-2" />
+                Contact
+              </Link>
+              <Link
+                href="/contact"
+                className="flex items-center px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 transform hover:-translate-y-0.5"
+              >
+                <CalendarDaysIcon className="w-4 h-4 mr-2" />
+                Book Free Counseling
+              </Link>
+            </div>
+
+            {/* Mobile menu button */}
+            <button
+              className="lg:hidden p-2 rounded-lg transition-colors duration-300 hover:bg-gray-100"
+              onClick={toggleMobileMenu}
+              aria-label="Toggle navigation"
+            >
+              {isMobileMenuOpen ? (
+                <XMarkIcon className={`w-7 h-7 transition-colors duration-300 ${
+                  isScrolled ? 'text-gray-900' : 'text-white'
+                }`} />
+              ) : (
+                <Bars3Icon className={`w-7 h-7 transition-colors duration-300 ${
+                  isScrolled ? 'text-gray-900' : 'text-white'
+                }`} />
+              )}
+            </button>
+          </div>
+
+          {/* Mobile Navigation */}
+          <div className={`lg:hidden transition-all duration-300 overflow-hidden ${
+            isMobileMenuOpen ? 'max-h-96 mt-4' : 'max-h-0'
+          }`}>
+            <div className="bg-white/95 backdrop-blur-lg rounded-xl shadow-xl p-6 space-y-4">
+              {navItems.map((item) => (
                 <Link
-                  className="nav-link fw-semibold px-3"
+                  key={item.name}
+                  className="block font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-4 py-3 rounded-lg transition-all duration-300"
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  style={{ color: isScrolled ? '#333333' : '#ffffff', transition: 'color 0.3s ease' }}
                 >
                   {item.name}
                 </Link>
-              </li>
-            ))}
-          </ul>
+              ))}
 
-          <div className="d-flex gap-2 flex-column flex-lg-row">
-            <Link
-              href="/contact"
-              className="btn btn-outline-light rounded-pill px-4 fw-semibold d-flex align-items-center justify-content-center"
-              onClick={() => setIsMobileMenuOpen(false)}
-              style={{
-                borderColor: isScrolled ? '#3b82f6' : '#ffffff',
-                color: isScrolled ? '#3b82f6' : '#ffffff',
-                borderWidth: '2px',
-                fontSize: '0.95rem'
-              }}
-            >
-              <PhoneIcon className="me-2" style={{ width: '18px', height: '18px' }} />
-              Contact
-            </Link>
-            <Link
-              href="/contact"
-              className="btn btn-primary rounded-pill px-4 fw-semibold d-flex align-items-center justify-content-center"
-              onClick={() => setIsMobileMenuOpen(false)}
-              style={{
-                fontSize: '0.95rem'
-              }}
-            >
-              <CalendarDaysIcon className="me-2" style={{ width: '18px', height: '18px' }} />
-              Book Free Counseling
-            </Link>
+              <div className="pt-4 space-y-3 border-t border-gray-200">
+                <Link
+                  href="/contact"
+                  className="flex items-center justify-center w-full px-6 py-3 border-2 border-blue-600 text-blue-600 font-semibold rounded-full hover:bg-blue-50 transition-all duration-300"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <PhoneIcon className="w-4 h-4 mr-2" />
+                  Contact
+                </Link>
+                <Link
+                  href="/contact"
+                  className="flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <CalendarDaysIcon className="w-4 h-4 mr-2" />
+                  Book Free Counseling
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </nav>
 
-      <style jsx>{`
-        .navbar {
-          background: rgba(255, 255, 255, 0.1) !important;
-          backdrop-filter: blur(10px) !important;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-          transition: all 0.3s ease !important;
-          padding: 1rem 0 !important;
-        }
-
-        .navbar.scrolled {
-          background: rgba(255, 255, 255, 0.95) !important;
-          backdrop-filter: blur(20px) !important;
-          box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-          padding: 0.5rem 0 !important;
-        }
-
-        .navbar.scrolled .navbar-brand {
-          font-size: 1.25rem !important;
-        }
-
-        .nav-link {
-          position: relative;
-        }
-
-        .nav-link::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          width: 0;
-          height: 2px;
-          background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-          transition: all 0.3s ease;
-          transform: translateX(-50%);
-        }
-
-        .nav-link:hover::after {
-          width: 80%;
-        }
-
-        .nav-link:hover {
-          color: #3b82f6 !important;
-        }
-
-        .navbar.scrolled .nav-link:hover {
-          color: #3b82f6 !important;
-        }
-
-        @media (max-width: 991.98px) {
-          .navbar-collapse.show {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-top: 1rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-          }
-
-          .navbar-collapse.show .nav-link {
-            color: #333333 !important;
-            padding: 0.75rem 1rem !important;
-            border-radius: 8px;
-            margin: 0.25rem 0;
-            transition: all 0.3s ease;
-          }
-
-          .navbar-collapse.show .nav-link:hover {
-            background-color: rgba(59, 130, 246, 0.1);
-            color: #3b82f6 !important;
-          }
-
-          .navbar-collapse.show .btn-outline-light {
-            border-color: #3b82f6 !important;
-            color: #3b82f6 !important;
-          }
-
-          .navbar-collapse.show .btn {
-            margin: 0.25rem 0;
-          }
-        }
-      `}</style>
-    </nav>
+      {/* Add padding to prevent content overlap */}
+      <div className="h-20" />
+    </>
   )
 }

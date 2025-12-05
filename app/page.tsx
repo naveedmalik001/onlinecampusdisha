@@ -124,25 +124,29 @@ export default function HomePage() {
 
 
   return (
-    <div>
+    <div className="min-h-screen">
       <Header />
 
       <main>
         <Hero />
 
         {/* Stats Section */}
-        <section className="section">
-          <div className="container">
-            <div className="row g-4">
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
-                <div className="col-lg-3 col-md-6" key={index}>
-                  <div className="stats-card scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                    <div className="stats-icon">
-                      <stat.Icon style={{ width: '48px', height: '48px' }} />
-                    </div>
-                    <div className="stats-number">{stat.number}</div>
-                    <div className="text-muted">{stat.text}</div>
+                <div
+                  key={index}
+                  className="text-center p-8 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-xl animate-scale-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mb-6">
+                    <stat.Icon className="w-8 h-8 text-white" />
                   </div>
+                  <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-2">
+                    {stat.number}
+                  </div>
+                  <div className="text-gray-600 font-medium">{stat.text}</div>
                 </div>
               ))}
             </div>
@@ -153,51 +157,46 @@ export default function HomePage() {
         <TopPartnerUniversities universities={universities} />
 
         {/* How It Works Section */}
-        <section className="section" style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)' }}>
-          <div className="container">
-            <h2 className="section-title">How It Works</h2>
-            <p className="section-subtitle">
-              Simple three-step process to get started with your online education journey
-            </p>
+        <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                How It Works
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Simple three-step process to get started with your online education journey
+              </p>
+            </div>
 
-            <div className="row g-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {howItWorks.map((step, index) => (
-                <div className="col-lg-4" key={index}>
-                  <div className="text-center p-4 slide-up" style={{ animationDelay: `${index * 0.15}s` }}>
-                    <div className="position-relative d-inline-block mb-4">
-                      <div
-                        className="d-inline-flex align-items-center justify-content-center rounded-circle mb-3"
-                        style={{
-                          width: '80px',
-                          height: '80px',
-                          background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
-                          boxShadow: '0 10px 30px rgba(59, 130, 246, 0.3)'
-                        }}
-                      >
-                        <span className="fw-bold fs-3 text-white">{step.step}</span>
-                      </div>
-                      <div
-                        className="position-absolute top-50 start-50 translate-middle"
-                        style={{
-                          width: '100px',
-                          height: '100px',
-                          background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
-                          opacity: 0.2,
-                          borderRadius: '50%',
-                          filter: 'blur(20px)',
-                          zIndex: -1
-                        }}
-                      />
+                <div
+                  key={index}
+                  className="relative text-center animate-slide-up"
+                  style={{ animationDelay: `${index * 0.15}s` }}
+                >
+                  {/* Connection Line */}
+                  {index < howItWorks.length - 1 && (
+                    <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-blue-200 to-purple-200" />
+                  )}
+
+                  <div className="relative inline-block mb-8">
+                    {/* Glow Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full opacity-20 blur-xl" />
+
+                    {/* Step Number Circle */}
+                    <div className="relative w-20 h-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mb-6">
+                      <span className="text-3xl font-bold text-white">{step.step}</span>
                     </div>
-                    <div
-                      className="d-inline-flex align-items-center justify-content-center bg-light rounded-circle mb-3"
-                      style={{ width: '70px', height: '70px' }}
-                    >
-                      <step.Icon className="text-primary" style={{ width: '36px', height: '36px' }} />
-                    </div>
-                    <h4 className="mb-3 fw-bold">{step.title}</h4>
-                    <p className="text-muted">{step.description}</p>
                   </div>
+
+                  {/* Icon Circle */}
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full shadow-lg mb-6">
+                    <step.Icon className="w-8 h-8 text-blue-600" />
+                  </div>
+
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{step.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{step.description}</p>
                 </div>
               ))}
             </div>
@@ -208,42 +207,51 @@ export default function HomePage() {
         <OnlineVsTraditional />
 
         {/* Testimonials Section */}
-        <section className="section">
-          <div className="container">
-            <h2 className="section-title">What Our Students Say</h2>
-            <p className="section-subtitle">
-              Real experiences from students who transformed their careers
-            </p>
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                What Our Students Say
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Real experiences from students who transformed their careers
+              </p>
+            </div>
 
-            <div className="row g-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {testimonials.map((testimonial, index) => (
-                <div className="col-lg-4" key={index}>
-                  <div className="testimonial-card h-100 fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                    <div className="d-flex mb-3">
-                      {[...Array(5)].map((_, i) => (
-                        <StarIcon key={i} className="text-warning" style={{ width: '20px', height: '20px' }} />
-                      ))}
+                <div
+                  key={index}
+                  className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 animate-fade-in relative overflow-hidden"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {/* Quote Mark */}
+                  <div className="absolute top-4 right-4 text-6xl text-gray-200 opacity-50 font-serif">
+                    "
+                  </div>
+
+                  {/* Stars */}
+                  <div className="flex mb-6">
+                    {[...Array(5)].map((_, i) => (
+                      <StarIcon key={i} className="w-5 h-5 text-yellow-400" />
+                    ))}
+                  </div>
+
+                  <p className="text-gray-700 mb-8 leading-relaxed text-lg relative z-10">
+                    "{testimonial.text}"
+                  </p>
+
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-white font-bold text-lg">
+                        {testimonial.name.charAt(0)}
+                      </span>
                     </div>
-                    <p className="mb-4" style={{ fontSize: '1.05rem', lineHeight: 1.7 }}>"{testimonial.text}"</p>
-                    <div className="d-flex align-items-center mt-auto">
-                      <div
-                        className="rounded-circle d-flex align-items-center justify-content-center me-3"
-                        style={{
-                          width: '50px',
-                          height: '50px',
-                          background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)'
-                        }}
-                      >
-                        <span className="text-white fw-bold fs-5">
-                          {testimonial.name.charAt(0)}
-                        </span>
-                      </div>
-                      <div>
-                        <h6 className="mb-0 fw-bold">{testimonial.name}</h6>
-                        <small className="text-muted">
-                          {testimonial.program} • {testimonial.university}
-                        </small>
-                      </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
+                      <p className="text-gray-600 text-sm">
+                        {testimonial.program} • {testimonial.university}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -256,41 +264,41 @@ export default function HomePage() {
         <FAQs />
 
         {/* CTA Section */}
-        <section
-          className="section text-white"
-          style={{
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            position: 'relative',
-            overflow: 'hidden'
-          }}
-        >
-          <div
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
-              opacity: 0.3
-            }}
-          />
-          <div className="container text-center" style={{ position: 'relative', zIndex: 1 }}>
-            <h2 className="mb-3 fw-bold" style={{ fontSize: '2.5rem' }}>Ready to Start Your Online Education Journey?</h2>
-            <p className="lead mb-4 opacity-90">
+        <section className="relative py-20 overflow-hidden">
+          {/* Background Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600" />
+
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            }} />
+          </div>
+
+          {/* Floating Elements */}
+          <div className="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl animate-pulse" />
+          <div className="absolute bottom-10 right-10 w-32 h-32 bg-white/10 rounded-full blur-xl animate-pulse" style={{ animationDelay: '1s' }} />
+
+          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Ready to Start Your Online Education Journey?
+            </h2>
+            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
               Get free counseling and explore 500+ online degree programs
             </p>
-            <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-              <Link href="/contact" className="btn btn-light btn-lg d-flex align-items-center justify-content-center">
-                <CalendarDaysIcon className="me-2" style={{ width: '22px', height: '22px' }} />
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Link
+                href="/contact"
+                className="group px-8 py-4 bg-white text-gray-900 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center justify-center"
+              >
+                <CalendarDaysIcon className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
                 Book Free Counseling
               </Link>
               <Link
                 href="/universities"
-                className="btn btn-outline-light btn-lg d-flex align-items-center justify-content-center"
-                style={{ borderWidth: '2px' }}
+                className="group px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-gray-900 transition-all duration-300 hover:scale-105 flex items-center justify-center"
               >
-                <MagnifyingGlassIcon className="me-2" style={{ width: '22px', height: '22px' }} />
+                <MagnifyingGlassIcon className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
                 Explore Programs
               </Link>
             </div>
